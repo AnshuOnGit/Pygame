@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<!-- saved from url=(0083)http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python -->
+<html lang="en-US" class="chrome"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script type="text/javascript" async="" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/cc.js"></script><script type="text/javascript" async="" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/itunes_autolinkmaker.js"></script><script async="" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/fbds.js"></script><script type="text/javascript" async="" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/ga.js"></script><script type="text/javascript" async="" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/cse.js"></script><script id="facebook-jssdk" async="" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/all.js"></script><script type="text/javascript" lang="en">var rootTag = document.getElementsByTagName("html");var classes = rootTag[0].className;rootTag[0].className = classes.replace("no-js","");if (navigator.appVersion.indexOf("Win")==-1) { classes = rootTag[0].className;rootTag[0].className = classes.replace("windows","") } </script>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+							<title>Beginning Game Programming for Teens with Python - Ray Wenderlich</title>
+									<meta name="twitter:card" content="photo">
+					<meta name="twitter:site" content="@rwenderlich">
+					<meta name="twitter:title" content="Beginning Game Programming for Teens with Python - Ray Wenderlich">
+					<meta name="twitter:description" content="">
+					<meta name="twitter:url" content="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python">
+					<meta name="twitter:image" content="">
+					
+										<meta property="og:title" content="Beginning Game Programming for Teens with Python - Ray Wenderlich">
+				<meta property="og:type" content="article">
+				<meta property="og:site_name" content="Ray Wenderlich">
+       		    <meta property="og:url" content="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python">
+				<meta property="og:description" content="">
+				
+<!-- This site is optimized with the Yoast WordPress SEO plugin v2.2.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="In this tutorial, you&#39;ll create a simple game called Bunnies and Badgers, where the bunny, has to defend a castle against an attacking horde of badgers.">
+<link rel="canonical" href="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/Beginning Game Programming for Teens with Python - Ray Wenderlich.html">
+<!-- / Yoast WordPress SEO plugin. -->
+
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.raywenderlich.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.2.2"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/wp-emoji-release.min.js" type="text/javascript"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="wpsqt-main-css" href="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/main.css" type="text/css" media="all">
+<link rel="stylesheet" id="style-main-css" href="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="contact-form-7-css" href="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="swiftype-css" href="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/autocomplete.css" type="text/css" media="all">
+<link rel="stylesheet" id="videojs-plugin-css" href="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/plugin-styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="videojs-css" href="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/video-js.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-polls-css" href="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/polls-css.css" type="text/css" media="all">
+<style id="wp-polls-inline-css" type="text/css">
+.wp-polls .pollbar {
+	margin: 1px;
+	font-size: 6px;
+	line-height: 8px;
+	height: 8px;
+	background-image: url('http://www.raywenderlich.com/wp-content/plugins/wp-polls/images/default/pollbg.gif');
+	border: 1px solid #c8c8c8;
+}
+
+</style>
+<script type="text/javascript" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/player.min.js"></script>
+<script type="text/javascript" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/jquery.js"></script>
+<script type="text/javascript" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/site.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var swiftypeParams = {"engineKey":"omdTFN4ka9Dq1GBywQZq"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/install_swiftype.min.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.raywenderlich.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://cdn5.raywenderlich.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.2.2">
+<link rel="shortlink" href="http://www.raywenderlich.com/?p=24252">
+<script type="text/javascript"><!--
+function powerpress_pinw(pinw){window.open('http://www.raywenderlich.com/?powerpress_pinw='+pinw, 'PowerPressPlayer','toolbar=0,status=0,resizable=1,width=460,height=320');	return false;}
+powerpress_url = 'http://cdn1.raywenderlich.com/wp-content/plugins/powerpress/';
+//-->
+</script>
+
+		<script type="text/javascript"> document.createElement("video");document.createElement("audio");document.createElement("track"); </script>
+		<style type="text/css">
+/* <![CDATA[ */
+img.latex { vertical-align: middle; border: none; }
+/* ]]> */
+</style>
+		<link rel="stylesheet" href="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/print.css" type="text/css" media="print">
+		<link rel="profile" href="http://gmpg.org/xfn/11">
+		<link rel="pingback" href="http://www.raywenderlich.com/xmlrpc.php">
+		<script>var siteUrl = 'http://cdn1.raywenderlich.com/wp-content/themes/raywenderlich'</script>
+		<script src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/global_combined.1.0.9.js" type="text/javascript"></script><script type="text/javascript" async="" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/bsa.js"></script><script type="text/javascript" async="" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/a.min.js"></script>
+		<script src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/jquery-ui-1.10.2.custom.min.js"></script>
+		<script src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/jquery.multi-accordion-1.5.3.js"></script>
+		<script>(function() {
+			var _fbq = window._fbq || (window._fbq = []);
+			if (!_fbq.loaded) {
+			var fbds = document.createElement('script');
+			fbds.async = true;
+			fbds.src = '//connect.facebook.net/en_US/fbds.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(fbds, s);
+			_fbq.loaded = true;
+			}
+			_fbq.push(['addPixelId', '915433011818742']);
+			})();
+			window._fbq = window._fbq || [];
+			window._fbq.push(['track', 'PixelInitialized', {}]);
+		</script>
+<noscript>&lt;img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=915433011818742&amp;amp;ev=PixelInitialized" /&gt;</noscript>
+	<script type="text/javascript" id="_bsap_js_39fcef7ed4520883d78f129c33995fd2" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/s_39fcef7ed4520883d78f129c33995fd2.js" async="async"></script><script src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/jsapi" type="text/javascript"></script><script type="text/javascript" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/pro.js" id="_bsap_premium_pro"></script><script type="text/javascript" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/saved_resource"></script><script type="text/javascript" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/saved_resource(1)"></script><script type="text/javascript" id="_bsaPRO_js" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/saved_resource(2)" async="async"></script><link type="text/css" href="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/default+en.css" rel="stylesheet"><link type="text/css" href="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/default.css" rel="stylesheet"><script type="text/javascript" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/default+en.I.js"></script><style type="text/css">
+.gsc-control-cse {
+font-family: Arial, sans-serif;
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-control-cse .gsc-table-result {
+font-family: Arial, sans-serif;
+}
+input.gsc-input, .gsc-input-box, .gsc-input-box-hover, .gsc-input-box-focus {
+border-color: #BCCDF0;
+}
+input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:focus {
+border-color: #336699;
+background-color: #E9E9E9;
+background-image: none;
+filter: none;
+}
+.gsc-tabHeader.gsc-tabhInactive {
+border-color: #E9E9E9;
+background-color: #E9E9E9;
+}
+.gsc-tabHeader.gsc-tabhActive {
+border-color: #FF9900;
+border-bottom-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-tabsArea {
+border-color: #FF9900;
+}
+.gsc-webResult.gsc-result,
+.gsc-results .gsc-imageResult {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-webResult.gsc-result:hover,
+.gsc-imageResult:hover {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gs-webResult.gs-result a.gs-title:link,
+.gs-webResult.gs-result a.gs-title:link b,
+.gs-imageResult a.gs-title:link,
+.gs-imageResult a.gs-title:link b {
+color: #1155CC;
+}
+.gs-webResult.gs-result a.gs-title:visited,
+.gs-webResult.gs-result a.gs-title:visited b,
+.gs-imageResult a.gs-title:visited,
+.gs-imageResult a.gs-title:visited b {
+color: #1155CC;
+}
+.gs-webResult.gs-result a.gs-title:hover,
+.gs-webResult.gs-result a.gs-title:hover b,
+.gs-imageResult a.gs-title:hover,
+.gs-imageResult a.gs-title:hover b {
+color: #1155CC;
+}
+.gs-webResult.gs-result a.gs-title:active,
+.gs-webResult.gs-result a.gs-title:active b,
+.gs-imageResult a.gs-title:active,
+.gs-imageResult a.gs-title:active b {
+color: #1155CC;
+}
+.gsc-cursor-page {
+color: #1155CC;
+}
+a.gsc-trailing-more-results:link {
+color: #1155CC;
+}
+.gs-webResult .gs-snippet,
+.gs-imageResult .gs-snippet,
+.gs-fileFormatType {
+color: #333333;
+}
+.gs-webResult div.gs-visibleUrl,
+.gs-imageResult div.gs-visibleUrl {
+color: #009933;
+}
+.gs-webResult div.gs-visibleUrl-short {
+color: #009933;
+}
+.gs-webResult div.gs-visibleUrl-short {
+display: none;
+}
+.gs-webResult div.gs-visibleUrl-long {
+display: block;
+}
+.gs-promotion div.gs-visibleUrl-short {
+display: none;
+}
+.gs-promotion div.gs-visibleUrl-long {
+display: block;
+}
+.gsc-cursor-box {
+border-color: #FFFFFF;
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-page {
+border-color: #E9E9E9;
+background-color: #FFFFFF;
+color: #1155CC;
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-current-page {
+border-color: #FF9900;
+background-color: #FFFFFF;
+color: #1155CC;
+}
+.gsc-webResult.gsc-result.gsc-promotion {
+border-color: #336699;
+background-color: #FFFFFF;
+}
+.gsc-completion-title {
+color: #1155CC;
+}
+.gsc-completion-snippet {
+color: #333333;
+}
+.gs-promotion a.gs-title:link,
+.gs-promotion a.gs-title:link *,
+.gs-promotion .gs-snippet a:link {
+color: #0000FF;
+}
+.gs-promotion a.gs-title:visited,
+.gs-promotion a.gs-title:visited *,
+.gs-promotion .gs-snippet a:visited {
+color: #663399;
+}
+.gs-promotion a.gs-title:hover,
+.gs-promotion a.gs-title:hover *,
+.gs-promotion .gs-snippet a:hover {
+color: #0000FF;
+}
+.gs-promotion a.gs-title:active,
+.gs-promotion a.gs-title:active *,
+.gs-promotion .gs-snippet a:active {
+color: #0000FF;
+}
+.gs-promotion .gs-snippet,
+.gs-promotion .gs-title .gs-promotion-title-right,
+.gs-promotion .gs-title .gs-promotion-title-right * {
+color: #000000;
+}
+.gs-promotion .gs-visibleUrl,
+.gs-promotion .gs-visibleUrl-short {
+color: #008000;
+}</style><script type="text/javascript" id="_bsaPRO_js" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/saved_resource(3)" async="async"></script><script type="text/javascript" id="_bsaPRO_js" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/saved_resource(4)" async="async"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://m-static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://m-static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://m-static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://m-static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https://m-static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://m-static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f8;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://m-static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://m-static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://m-static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://m-static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3a5795;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://m-static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://m-static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #2f477a;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://m-static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f8;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://m-static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style></head>
+
+	<body class="single single-post postid-24252 single-format-standard">
+		<div id="wrapper">
+			<header id="branding" class="rw_subservice">
+				<div id="site-details" class="wrapper clearfix rw_subservice">
+					<hgroup id="site-logo" class="clearfix">
+						<h1 id="site-title"><a href="http://www.raywenderlich.com/" title="Ray Wenderlich" class="image" rel="home" sl-processed="1">Ray Wenderlich</a></h1>
+						<h2 id="site-name"><a href="http://www.raywenderlich.com/" sl-processed="1"><span class="first-name">RAY</span><span class="last-name">WENDERLICH</span></a></h2>
+						<h2 id="site-motto"><a href="http://www.raywenderlich.com/" sl-processed="1">TUTORIALS FOR DEVELOPERS &amp; GAMERS</a></h2>
+						<h2 id="site-description"><a href="http://www.raywenderlich.com/" border="0" sl-processed="1">Tutorials for iPhone / iOS Developers and Gamers</a></h2>
+					</hgroup>
+					<nav class="navtext">
+						<h1>Site Navigation</h1>
+						<ul id="user-account-navigation" class="logged-in">
+							<li class="login">					<ul id="user-account-navigation" class="logged-out">
+						<li class="login-link"><a href="http://www.raywenderlich.com/login" sl-processed="1">LOGIN</a></li>
+						<li class="separator"></li>
+						<li class="sign-out-link"><a href="http://www.raywenderlich.com/login?section=new-account" sl-processed="1">SIGN UP</a></li>
+					</ul>
+				</li>
+							<script>
+								jQuery.ajax({
+									type : "POST",
+									data : { "javascript" : "false" },
+									url : "http://www.raywenderlich.com/wp-content/themes/raywenderlich/templates/login_area.php",
+									cache : false,
+								}).done(function(html) {
+									jQuery("#user-account-navigation li").html(html);
+								})
+							</script>
+						</ul>
+						<ul id="sitewide-nagivation">
+							<li class="about"><a href="http://www.raywenderlich.com/104320/open-call-for-writers-and-editors" style="margin-right: 10px;" sl-processed="1">Write For Us</a></li>
+							<li class="about"><a href="http://www.raywenderlich.com/about" sl-processed="1">About</a></li>
+							<li class="language">
+								<ul id="languagenav">
+			    	    			<li id="language">
+			    	    							    	    			</li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<div class="navigation-band rw_subservice">
+					<div class="wrapper clearfix">
+						<ul id="subnav" class="navtext">
+							<li class="ios-games separator"></li>
+							<li id="all-tutorials"><a class="verbose-link" href="http://www.raywenderlich.com/tutorials" sl-processed="1">Written Tutorials</a><a class="abridged-link" href="http://www.raywenderlich.com/tutorials" sl-processed="1">Written</a>
+								<ul class="expanded-subnav">
+									<li><h3>LANGUAGES</h3>
+									</li><li>
+										<ul class="site-subcategories">
+											<li class="last-item"><a href="http://www.raywenderlich.com/swift-language-tutorials" sl-processed="1">Swift</a></li>
+										</ul>
+									</li>
+									<li><h3>APP DEVELOPMENT</h3>
+									</li><li>
+										<ul class="site-subcategories">
+											<li><a href="http://www.raywenderlich.com/ios-tutorials" sl-processed="1">iOS</a></li>
+											<li><a href="http://www.raywenderlich.com/android-tutorials" sl-processed="1">Android</a></li>
+											<li class="last-item"><a href="http://www.raywenderlich.com/os-x-tutorials" sl-processed="1">OS X</a></li>
+										</ul>
+									</li>
+									<li><h3>GAME DEVELOPMENT</h3>
+									</li><li>
+										<ul class="site-subcategories">
+											<li><a href="http://www.raywenderlich.com/sprite-kit-tutorials" sl-processed="1">Sprite Kit</a></li>
+											<li><a href="http://www.raywenderlich.com/unity-tutorials" sl-processed="1">Unity</a></li>
+											<li class="last-item"><a href="http://www.raywenderlich.com/unreal-engine-tutorials" sl-processed="1">Unreal Engine</a></li>
+										</ul>
+									</li>
+									<li><h3>OTHER</h3>
+									</li><li>
+										<ul class="site-subcategories">
+											<li><a href="http://www.raywenderlich.com/articles" sl-processed="1">Articles</a></li>
+											<li class="last-item"><a href="http://www.raywenderlich.com/tutorial-archive" sl-processed="1">Archive</a></li>
+										</ul>
+									</li>
+								</ul>
+								<style>
+									#all-tutorials .expanded-subnav { display:none; }
+									#all-tutorials:hover .expanded-subnav, #all-tutorials:focus .expanded-subnav { display:block; }
+									.expanded-subnav { position:absolute;background-color:#005C30;min-width: 170px;left: 1px;border-right: 1px solid #007B41;border-left: 1px solid #007B41;padding-bottom:13px; }
+									.expanded-subnav h3 { margin-left:9px;color:#002413;font-family: 'Open Sans',sans-serif;font-weight:700;font-size:12px; }
+									#subnav .expanded-subnav li { float:none; }
+									#subnav .expanded-subnav li .site-subcategories { margin-left:23px; }
+									#subnav  #all-tutorials .expanded-subnav a { background:none;padding:4px;width:110px;border-bottom:1px solid #00411d;font-size:16px;color:#A2C8B6;height:31px;padding-bottom:0;margin-top:2px; }
+									#subnav #all-tutorials .expanded-subnav a:hover { color:#fff; }
+									#subnav #all-tutorials .expanded-subnav .last-item  a { border-bottom:none; }
+									.page #mc_embed_signup .mc-field-group .asterisk {  position: relative;top: 5px;right:0; }
+									.page #mc_embed_signup .mc-field-group { padding-bottom:0; }
+									.page #mc_embed_signup .mc-field-group input { margin-top:-11px; }
+								</style>
+								<script>
+									jQuery(document).ready(function() {
+										jQuery("#all-tutorials .verbose-link, #all-tutorials .abridged-link").click(function() {
+											return false;
+										});
+										jQuery("#all-tutorials").bind("touchstart", function(event){
+        									event.stopPropagation();
+										});
+										jQuery(document).bind('touchstart', function(e) {
+									        jQuery("#all-tutorials .expanded-subnav").fadeOut(300);
+										});
+										jQuery("#all-tutorials .expanded-subnav a").click(function () {
+										      $("#all-tutorials .expanded-subnav").fadeOut(300);
+										});
+									});
+
+
+								</script>
+							</li>
+							<li class="separator"></li>
+							<li id="videos"><a class="verbose-link" href="http://www.raywenderlich.com/video-tutorials" sl-processed="1">Video Tutorials</a><a href="http://www.raywenderlich.com/video-tutorials" class="abridged-link" sl-processed="1">Video</a></li>
+							<li class="separator"></li>
+							<li id="podcasts"><a href="http://www.raywenderlich.com/rwpodcast" sl-processed="1">Podcast</a></li>
+							<li class="separator"></li>
+							<li id="ios-gaming"><a href="http://www.raywenderlich.com/forums" sl-processed="1">Forums</a></li>
+							<li class="separator"></li>
+							<li id="art"><a href="http://www.gameartguppy.com/" target="_blank" sl-processed="1">Art</a></li>
+							<li class="separator"></li>
+							<li id="games"><a href="http://www.raywenderlich.com/store" sl-processed="1">Store</a></li>
+							<li class="separator"></li>
+							<li class="search">
+								<form action="http://www.raywenderlich.com/" class="searchform clearfix" method="get">
+									<label class="assistive-text" for="s">Search</label>
+									<input type="text" placeholder="Search for a tutorial" class="s field" name="s" autocomplete="off">
+									<input type="hidden" name="cof" value="FORID:10">
+								</form>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="subnav-band "></div>
+							<!-- .wrapper -->
+			</header>
+		</div>
+
+		<div class="wrapper clearfix" id="print-header" style="display:none">
+			<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/print-header.png" width="1202" height="102">
+		</div>
+		<div id="main" class="wrapper clearfix">
+			<div id="container">
+	<div id="primary" class="no-margin-left">
+		<div id="primary-container">
+			<div class="banner-ad" syle="overflow:hidden">
+				<!-- BuySellAds.com Ad Code -->
+				<div id="bsap_1272017" class="bsap bsap_1272017" data-serve="CV7IEKT">
+<style type="text/css">
+div.bsap_1272017{width:100%;display:block;}div.bsap_1272017 a{width:728px;}div.bsap_1272017 a img{padding:0;}div.bsap_1272017 a em{font-style:normal;}div.bsap_1272017 a{display:block;font-size:11px;color:#888;font-family:verdana,sans-serif;margin:0;text-align:center;text-decoration:none;overflow:hidden;float:left;margin-bottom:10px;}
+div.bsap_1272017 img{border:0;clear:right;}
+div.bsap_1272017 a.adhere{color:#666;font-weight:bold;font-size:12px;border:1px solid #ccc;background:#e7e7e7;text-align:center;}
+div.bsap_1272017 a.adhere:hover{border:1px solid #999;background:#ddd;color:#333;}div.bsap_1272017 a{line-height:100%;}div.bsap_1272017 a.adhere{width:728px;height:90px;line-height:720%;}html>body div.bsap_1272017 a.adhere{width:726px;height:88px;}div.bsap_1272017 img.s{height:0;width:0;}div.bsap_1272017{line-height:9px;}div.bsap_1272017 .bsap_adhere2,div.bsap_1272017 iframe{float:left;}div.bsap_1272017 .bsap_adhere2 a{height:90px;width:20px;background:url(http:\/\/s3.buysellads.com\/ac\/ah20x90_1.gif) no-repeat 0 0;text-indent:-9999px;}
+</style>
+<a href="http://srv.buysellads.com/ads/click/x/GTND423ICASIV53NCW74YKQWCKSI52QWCTYD4Z3JCE7I527MCAADV27KC6BDC27UCESDVK3EHJNCLSIZ" class="ad0 odd " title="PSPDFKit - The leading framework for displaying and annotating PDFs in your iOS apps." id="bsa_4291804" target="_blank" rel="nofollow" sl-processed="1">
+<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/205876-1390314136.png" width="728" height="90" alt=""></a>
+<script type="text/javascript" id="auto_1" class="ignoreme"> if (typeof(BSACallback) !== 'undefined') BSACallback(); </script></div>
+				<!-- End BuySellAds.com Ad Code -->
+			</div>
+			<div id="content">
+								<article id="post-24252" class="clearfix post-24252 post type-post status-publish format-standard hentry category-archive tag-game tag-lang_en tag-python tag-sample-code tag-teen tag-tutorial">
+					<header class="entry-header">
+						<h2 class="entry-title">
+            				<a href="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/Beginning Game Programming for Teens with Python - Ray Wenderlich.html" title="Beginning Game Programming for Teens with Python" sl-processed="1">Beginning Game Programming for Teens with Python</a>
+            			</h2>
+            			<div class="tutorial-meta" id="larger-screens">
+	            			<div class="author-meta">
+								<a href="http://www.raywenderlich.com/u/jmeyer" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/f72d4c37b7a4c7ede045f3bcb696df49" alt="" width="100" height="100" class="user-avatar"></a> <a href="http://www.raywenderlich.com/u/jmeyer" class="author-name" sl-processed="1">										Julian Meyer</a> <span class="author-post-date">on January 22, 2013 </span>
+											            			</div>
+	            			<div class="social-links">
+			    				<ul>
+			    								    							<li class="twitter"><div id="tweetbutton24252m" class="tw_button" style="margin-bottom:10px;"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/raw_dbe6967a82d17dc36ab454e930924774.html" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="position: absolute; visibility: hidden;"></iframe></div></li>
+			    																<li class="facebook"><div class="fb-like fb_iframe_widget" data-href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;container_width=0&amp;href=http%3A%2F%2Fwww.raywenderlich.com%2F24252%2Fbeginning-game-programming-for-teens-with-python&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=450"><span style="vertical-align: bottom; width: 77px; height: 20px;"><iframe name="f2ac6f08" width="450px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/like(1).html" class="" style="border: none; visibility: visible; width: 77px; height: 20px;"></iframe></span></div></li>
+									<li class="facebook iframe-link"><iframe src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/like.html" allowtransparency="true" frameborder="0" scrolling="no" style="width: 74px; height: 20px;"></iframe></li>
+			    				</ul>
+			    			</div>
+	            		</div>
+					</header>
+					<div class="content-wrapper">
+						<div class="wwsgd" style=""><p style="border:thin dotted black; padding:3mm;margin-bottom:10px">If you're new here, you may want to subscribe to my <a href="http://www.raywenderlich.com/feed/" sl-processed="1">RSS feed</a> or follow me on <a href="http://twitter.com/rwenderlich" sl-processed="1">Twitter</a>. Thanks for visiting!</p></div><div id="attachment_28257" style="width: 260px" class="wp-caption alignright"><a href="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/BunniesBadgers.png" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/BunniesBadgers.png" alt="Learn how to make a simple game with Python!" title="Learn how to make a simple game with Python!" width="250" height="205" class="size-full wp-image-28257"></a><p class="wp-caption-text">Learn how to make a simple game with Python!</p></div>
+<p><i>This is a post by Tutorial Team Member <a href="http://www.raywenderlich.com/?page_id=9#julianmeyer" sl-processed="1">Julian Meyer</a>, a 13-year-old python developer. You can find him on <a href="https://plus.google.com/u/0/117404693911977592313?rel=author" rel="author" target="_blank" sl-processed="1">Google+</a> and <a href="https://twitter.com/jmeyer2k" target="_blank" sl-processed="1">Twitter</a>.<br>
+</i></p>
+<p>Have you ever wondered how video games are created? It’s not as complicated as you might think!</p>
+<p>In this tutorial, you’ll create a simple game called Bunnies and Badgers, where the hero, the bunny, has to defend a castle against an attacking horde of badgers. :O</p>
+<p>To write this game, you’ll use Python. No, I’m not talking about a big snake! :] </p>
+<p>Python is a computer programming language. We chose Python for this tutorial because it’s a simple language to start out with, and is fun and easy to learn.</p>
+<p>If you are new to Python, before you begin check out this book: <a href="http://greenteapress.com/thinkpython/html/index.html" sl-processed="1">Think Python: How to Think Like a Computer Scientist</a>. That should get you up to speed.</p>
+<p>Then dive back here and get ready – there’s a war coming on between the bunnies and the badgers. Keep reading to jump into the fray!<span id="more-24252"></span><br>
+</p><h2>Getting Started: Installing Python</h2>
+<p>If you want to try this tutorial on a Windows PC, you need to install <a href="http://www.python.org/download/" sl-processed="1">Python</a>. Make sure you grab the 2.7.3 version and <em>NOT the 3.3.0 version</em>! After running the installer, you should have <em>IDLE</em> in your All Programs folder in your start menu. Launch IDLE to get started.</p>
+<p>If you are on a Mac, you already have Python installed! Just open Terminal (/Applications/Utilities/Terminal.app), type in <em>python</em> and press Enter. </p>
+<div class="note">
+<p><em>Note:</em> If you install Python from python.org (and might have to if you want to get PyGame working), then you’ll also have access to IDLE on the Mac as well. It should be in the “/Applications/Python 2.7″ folder.</p>
+</div>
+<p>If you did it correctly, you should see something like this:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p242521"><td class="code" id="p24252code1"><pre class="text" style="font-family:monospace;">Python 2.7.3 (v2.7.3:70274d53c1dd, Apr  9 2012, 20:52:43) 
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt;</pre></td></tr></tbody></table></div>
+
+<div class="note">
+<p><em>Note: </em>If you want to exit the Python prompt (the triple angle brackets, &gt;&gt;&gt;), you can either type <em>exit()</em> at the Python prompt and press Return or you can press Control+D.</p>
+</div>
+<p>Once you are at the Python prompt, to test if Python is correctly working, type in <em>print 1+1</em> and hit Enter/Return. It should print 2. You have just written your first Python program!</p>
+<p><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/HGLbF.png" alt="" align="center"></p>
+<p>Now that you know Python is working correctly, you need to install PyGame in order to write a game using Python.</p>
+<p>PyGame is a Python library that makes writing games a lot easier! It provides functionality such as image handling and sound playback that you can easily incorporate into your game.</p>
+<p>Go <a href="http://www.pygame.org/download.shtml" sl-processed="1">here</a> and download the PyGame installer appropriate for your system. Make sure you download a Python 2.7 version.</p>
+<div class="note">
+<p><em>Note: </em>The PyGame installer from the link above will not work with the default Python from Apple that is installed on a Mac. You’ll need to download Python from python.org and install it in order to use PyGame. Or, you can install both Python and PyGame via <a href="http://www.macports.org/" sl-processed="1">MacPorts</a>.</p>
+</div>
+<p>To verify that you have PyGame installed properly, open IDLE or run Python via the Terminal and type in <em>import pygame</em> at the Python prompt. If this doesn’t result in any output, then you’re good. </p>
+<p>If, on the other hand, it outputs an error like what’s shown below, then PyGame is not installed.</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p242522"><td class="code" id="p24252code2"><pre class="text" style="font-family:monospace;">Python 2.7.2 (default, Jun 20 2012, 16:23:33) 
+[GCC 4.2.1 Compatible Apple Clang 4.0 (tags/Apple/clang-418.0.60)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; import pygame
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+ImportError: No module named pygame
+&gt;&gt;&gt;</pre></td></tr></tbody></table></div>
+
+<p>If you get an error like this, post on the forums and I will help you get it working. </p>
+<h3>Running Python Code from File</h3>
+<p>While you can run short bits of Python code at the Python prompt, if you want to work on a bigger program (like a game), you probably want to save your code to a file so that you don’t have to type it in over and over again.</p>
+<p>There are several ways to run a Python program as a file. One way is to use a plain text editor like Notepad (Windows), or TextEdit (Mac). Open a new text file, type in your Python code (like <em>print 1+1</em>). Then save it as <em>XXX.py</em> (The XXX can be any descriptive file name). </p>
+<p>Then on Windows, double-click this file to run it. On Mac, open Terminal and type <em>python</em>, then drag the file that you saved onto the Terminal window and press Enter.</p>
+<p>The other way is to type in your code using the IDLE editor, which is what you’re going to do in this tutorial. To run idle, simply type <em>idle</em> from Terminal. Then choose File\New Window from the IDLE menu and you should have a text editor window where you can type in Python code. You can save your code changes via File\Save and even run the code via Run\Run Module (F5).</p>
+<p>Do note that the Run menu is only available if you have a file open in an editor window.</p>
+<h3>Adding the Game Resources</h3>
+<p>You are almost ready to create your game. But what’s a game without some great graphics and sound effects? I’ve put together all the graphics and sound effects you’ll need for your game into a ZIP archive. You can download it <a href="http://cdn3.raywenderlich.com/downloads/BB_Resources.zip" sl-processed="1">here</a>.</p>
+<p>Once you’ve downloaded the file, create a folder for your game on your hard disk and extract the resources folder into that folder so that your game folder has a subfolder named <em>resources</em>, with the various resources grouped in additional folders inside it, like this:</p>
+<p><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/NewImage.png" alt="Resources" title="Resources" border="0" width="700" height="259"></p>
+<p>You are now ready to begin creating Bunnies and Badgers. :]</p>
+<h2>Step 1: Hello Bunny</h2>
+<p>Run IDLE and open a new text editor window, as mentioned in the previous section. Type the following code into the editor window:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p242523"><td class="code" id="p24252code3"><pre class="python" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># 1 - Import library</span>
+<span style="color: #ff7700;font-weight:bold;">import</span> pygame
+<span style="color: #ff7700;font-weight:bold;">from</span> pygame.<span style="color: #008000;">locals</span> <span style="color: #ff7700;font-weight:bold;">import</span> <span style="color: #66cc66;">*</span>
+&nbsp;
+<span style="color: #808080; font-style: italic;"># 2 - Initialize the game</span>
+pygame.<span style="color: black;">init</span><span style="color: black;">(</span><span style="color: black;">)</span>
+width, height = <span style="color: #ff4500;">640</span>, <span style="color: #ff4500;">480</span>
+screen=pygame.<span style="color: black;">display</span>.<span style="color: black;">set_mode</span><span style="color: black;">(</span><span style="color: black;">(</span>width, height<span style="color: black;">)</span><span style="color: black;">)</span>
+&nbsp;
+<span style="color: #808080; font-style: italic;"># 3 - Load images</span>
+player = pygame.<span style="color: black;">image</span>.<span style="color: black;">load</span><span style="color: black;">(</span><span style="color: #483d8b;">"resources/images/dude.png"</span><span style="color: black;">)</span>
+&nbsp;
+<span style="color: #808080; font-style: italic;"># 4 - keep looping through</span>
+<span style="color: #ff7700;font-weight:bold;">while</span> <span style="color: #ff4500;">1</span>:
+    <span style="color: #808080; font-style: italic;"># 5 - clear the screen before drawing it again</span>
+    screen.<span style="color: black;">fill</span><span style="color: black;">(</span><span style="color: #ff4500;">0</span><span style="color: black;">)</span>
+    <span style="color: #808080; font-style: italic;"># 6 - draw the screen elements</span>
+    screen.<span style="color: black;">blit</span><span style="color: black;">(</span>player, <span style="color: black;">(</span><span style="color: #ff4500;">100</span>,<span style="color: #ff4500;">100</span><span style="color: black;">)</span><span style="color: black;">)</span>
+    <span style="color: #808080; font-style: italic;"># 7 - update the screen</span>
+    pygame.<span style="color: black;">display</span>.<span style="color: black;">flip</span><span style="color: black;">(</span><span style="color: black;">)</span>
+    <span style="color: #808080; font-style: italic;"># 8 - loop through the events</span>
+    <span style="color: #ff7700;font-weight:bold;">for</span> event <span style="color: #ff7700;font-weight:bold;">in</span> pygame.<span style="color: black;">event</span>.<span style="color: black;">get</span><span style="color: black;">(</span><span style="color: black;">)</span>:
+        <span style="color: #808080; font-style: italic;"># check if the event is the X button </span>
+        <span style="color: #ff7700;font-weight:bold;">if</span> event.<span style="color: #008000;">type</span>==pygame.<span style="color: black;">QUIT</span>:
+            <span style="color: #808080; font-style: italic;"># if it is quit the game</span>
+            pygame.<span style="color: black;">quit</span><span style="color: black;">(</span><span style="color: black;">)</span> 
+            exit<span style="color: black;">(</span><span style="color: #ff4500;">0</span><span style="color: black;">)</span></pre></td></tr></tbody></table></div>
+
+<p>Save the file into your game folder (the one where the resources subfolder is) and name it <em>game.py</em>.</p>
+<p>Let’s go through the code section-by-section:</p>
+<ol>
+<li>Import the PyGame library. This allows you to use functions from the library in your program.</li>
+<li>Initialize PyGame and set up the display window.</li>
+<li>Load the image that you will use for the bunny.</li>
+<li>Keep looping over the following indented code.
+<div class="note">
+<p><em>Note: </em>Where other languages like Objective-C, Java or PHP use curly braces to show a block of code to be executed within a while loop or an if statement, Python uses indenting to identify code blocks. So proper indentation is very important in Python – keep that in mind. :]</p>
+</div>
+</li>
+<li>Fill the screen with black before you draw anything.</li>
+<li>Add the bunny image that you loaded to the screen at x=100 and y=100.</li>
+<li>Update the screen.</li>
+<li>Check for any new events and if there is one, and it is a quit command, exit the program.
+<div class="note">
+<p><em>Note: </em>According to the <a href="http://www.pygame.org/docs/ref/pygame.html" sl-processed="1">PyGame documentation</a>, you shouldn’t need to call <em>pygame.quit()</em> since the interpreter will automatically call it when the interpreter shuts down. However, at least on Mac OS, the game would hang on exit unless <em>pygame.quit()</em> was called.</p>
+</div>
+</li>
+</ol>
+<p>If you run the code now (via Run\Run Module in the Idle menu), you should see a screen similar to the one below:</p>
+<p><a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python/screenshot-1-2" rel="attachment wp-att-25466" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/screenshot-1-391x320.png" alt="" title="Hello Bunny" width="391" height="320" class="size-medium wp-image-25466"></a></p>
+<p>w00t the bunny is in the scene, and ready for action!</p>
+<p>But the game looks scary and lonely with the bunny just standing there on a black background. Time to prettify things a little bit. :]</p>
+<h2>Step 2: Add Scenery</h2>
+<p>Let’s start by adding a background to the game scene. This can be done with a couple more <em>screen.blit()</em> calls.</p>
+<p>At the end of section #3, after loading the player image, add the following code:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p242524"><td class="code" id="p24252code4"><pre class="python" style="font-family:monospace;">grass = pygame.<span style="color: black;">image</span>.<span style="color: black;">load</span><span style="color: black;">(</span><span style="color: #483d8b;">"resources/images/grass.png"</span><span style="color: black;">)</span>
+castle = pygame.<span style="color: black;">image</span>.<span style="color: black;">load</span><span style="color: black;">(</span><span style="color: #483d8b;">"resources/images/castle.png"</span><span style="color: black;">)</span></pre></td></tr></tbody></table></div>
+
+<p>This loads the images and puts them into specific variables. Now they have to be drawn on screen. But if you check the grass image, you will notice that it won’t cover the entire screen area, which is 640 x 480. This means you have to tile the grass over the screen area to cover it completely.</p>
+<p>Add the following code to <em>game.py</em> at the beginning of section #6 (before the player is drawn on screen):</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p242525"><td class="code" id="p24252code5"><pre class="python" style="font-family:monospace;">    <span style="color: #ff7700;font-weight:bold;">for</span> x <span style="color: #ff7700;font-weight:bold;">in</span> <span style="color: #008000;">range</span><span style="color: black;">(</span>width/grass.<span style="color: black;">get_width</span><span style="color: black;">(</span><span style="color: black;">)</span>+<span style="color: #ff4500;">1</span><span style="color: black;">)</span>:
+        <span style="color: #ff7700;font-weight:bold;">for</span> y <span style="color: #ff7700;font-weight:bold;">in</span> <span style="color: #008000;">range</span><span style="color: black;">(</span>height/grass.<span style="color: black;">get_height</span><span style="color: black;">(</span><span style="color: black;">)</span>+<span style="color: #ff4500;">1</span><span style="color: black;">)</span>:
+            screen.<span style="color: black;">blit</span><span style="color: black;">(</span>grass,<span style="color: black;">(</span>x<span style="color: #66cc66;">*</span><span style="color: #ff4500;">100</span>,y<span style="color: #66cc66;">*</span><span style="color: #ff4500;">100</span><span style="color: black;">)</span><span style="color: black;">)</span>
+    screen.<span style="color: black;">blit</span><span style="color: black;">(</span>castle,<span style="color: black;">(</span><span style="color: #ff4500;">0</span>,<span style="color: #ff4500;">30</span><span style="color: black;">)</span><span style="color: black;">)</span>
+    screen.<span style="color: black;">blit</span><span style="color: black;">(</span>castle,<span style="color: black;">(</span><span style="color: #ff4500;">0</span>,<span style="color: #ff4500;">135</span><span style="color: black;">)</span><span style="color: black;">)</span>
+    screen.<span style="color: black;">blit</span><span style="color: black;">(</span>castle,<span style="color: black;">(</span><span style="color: #ff4500;">0</span>,<span style="color: #ff4500;">240</span><span style="color: black;">)</span><span style="color: black;">)</span>
+    screen.<span style="color: black;">blit</span><span style="color: black;">(</span>castle,<span style="color: black;">(</span><span style="color: #ff4500;">0</span>,<span style="color: #ff4500;">345</span> <span style="color: black;">)</span><span style="color: black;">)</span></pre></td></tr></tbody></table></div>
+
+<p>As you can see, the for statement loops through x first. Then, within that for loop, it loops through y and draws the grass at the x and y values generated by the for loops. The next couple of lines just draw the castles on the screen. </p>
+<p>If you run the program now, you should get something like this:</p>
+<p><a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python/screenshot-2-2" rel="attachment wp-att-25467" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/screenshot-2-391x320.png" alt="" title="Add Scenery" width="391" height="320" class="size-medium wp-image-25467"></a></p>
+<p>Much better – this is starting to look good! :]</p>
+<h2>Step 3: Make the Bunny Move</h2>
+<p>Next you need to add some actual gameplay elements, like making the bunny respond to key presses.</p>
+<p>To do that, first you’ll implement a good method of keeping track of which keys are being pressed at a given moment. You can do this simply by making an array of key states that holds the state of each key you want to use for the game.</p>
+<p>Add the following code to <em>game.py</em> at the end of section #2 (after you set the screen height and width):</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p242526"><td class="code" id="p24252code6"><pre class="python" style="font-family:monospace;">keys = <span style="color: black;">[</span><span style="color: #008000;">False</span>, <span style="color: #008000;">False</span>, <span style="color: #008000;">False</span>, <span style="color: #008000;">False</span><span style="color: black;">]</span>
+playerpos=<span style="color: black;">[</span><span style="color: #ff4500;">100</span>,<span style="color: #ff4500;">100</span><span style="color: black;">]</span></pre></td></tr></tbody></table></div>
+
+<p>This code is pretty self-explanatory. The keys array keeps track of the keys being pressed in the following order: WASD. Each item in the array corresponds to one key – the first to W, the second to A and so on.</p>
+<p>The playerpos variable is where the program draws the player. Since the game will move the player to different positions, it’s easier to have a variable that contains the player position and then simply draw the player at that position.</p>
+<p>Now you need to modify the existing code for drawing the player to use the new <em>playerpos</em> variable. Change the following line in section #6:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p242527"><td class="code" id="p24252code7"><pre class="python" style="font-family:monospace;">    screen.<span style="color: black;">blit</span><span style="color: black;">(</span>player, <span style="color: black;">(</span><span style="color: #ff4500;">100</span>,<span style="color: #ff4500;">100</span><span style="color: black;">)</span><span style="color: black;">)</span></pre></td></tr></tbody></table></div>
+
+<p>To:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p242528"><td class="code" id="p24252code8"><pre class="python" style="font-family:monospace;">    screen.<span style="color: black;">blit</span><span style="color: black;">(</span>player, playerpos<span style="color: black;">)</span></pre></td></tr></tbody></table></div>
+
+<p>Next, update the keys array based on which keys are being pressed. PyGame makes detecting key presses easy by adding event.key functions. </p>
+<p>At the end of section #8, right after the block checking for event.type==pygame.QUIT, put this code (at the same indentation level as the pygame.QUIT if block):</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p242529"><td class="code" id="p24252code9"><pre class="python" style="font-family:monospace;">        <span style="color: #ff7700;font-weight:bold;">if</span> event.<span style="color: #008000;">type</span> == pygame.<span style="color: black;">KEYDOWN</span>:
+            <span style="color: #ff7700;font-weight:bold;">if</span> event.<span style="color: black;">key</span>==K_w:
+                keys<span style="color: black;">[</span><span style="color: #ff4500;">0</span><span style="color: black;">]</span>=<span style="color: #008000;">True</span>
+            <span style="color: #ff7700;font-weight:bold;">elif</span> event.<span style="color: black;">key</span>==K_a:
+                keys<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span>=<span style="color: #008000;">True</span>
+            <span style="color: #ff7700;font-weight:bold;">elif</span> event.<span style="color: black;">key</span>==K_s:
+                keys<span style="color: black;">[</span><span style="color: #ff4500;">2</span><span style="color: black;">]</span>=<span style="color: #008000;">True</span>
+            <span style="color: #ff7700;font-weight:bold;">elif</span> event.<span style="color: black;">key</span>==K_d:
+                keys<span style="color: black;">[</span><span style="color: #ff4500;">3</span><span style="color: black;">]</span>=<span style="color: #008000;">True</span>
+        <span style="color: #ff7700;font-weight:bold;">if</span> event.<span style="color: #008000;">type</span> == pygame.<span style="color: black;">KEYUP</span>:
+            <span style="color: #ff7700;font-weight:bold;">if</span> event.<span style="color: black;">key</span>==pygame.<span style="color: black;">K_w</span>:
+                keys<span style="color: black;">[</span><span style="color: #ff4500;">0</span><span style="color: black;">]</span>=<span style="color: #008000;">False</span>
+            <span style="color: #ff7700;font-weight:bold;">elif</span> event.<span style="color: black;">key</span>==pygame.<span style="color: black;">K_a</span>:
+                keys<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span>=<span style="color: #008000;">False</span>
+            <span style="color: #ff7700;font-weight:bold;">elif</span> event.<span style="color: black;">key</span>==pygame.<span style="color: black;">K_s</span>:
+                keys<span style="color: black;">[</span><span style="color: #ff4500;">2</span><span style="color: black;">]</span>=<span style="color: #008000;">False</span>
+            <span style="color: #ff7700;font-weight:bold;">elif</span> event.<span style="color: black;">key</span>==pygame.<span style="color: black;">K_d</span>:
+                keys<span style="color: black;">[</span><span style="color: #ff4500;">3</span><span style="color: black;">]</span>=<span style="color: #008000;">False</span></pre></td></tr></tbody></table></div>
+
+<p>Wow! Those are a lot of lines of code. If you break it down into the if statements though, it’s not that complicated. </p>
+<p>First you check to see if a key is being pressed down or released. Then you check which key is being pressed or released, and if the key being pressed or released is one of the keys you’re using, you update the keys variable accordingly.</p>
+<p>Finally, you need to update the <em>playerpos</em> variable in response to the key presses. This is actually very simple. </p>
+<p>Add the following code to the end of game.py (with one indentation level, putting it at the same level as the for loop):</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425210"><td class="code" id="p24252code10"><pre class="python" style="font-family:monospace;">    <span style="color: #808080; font-style: italic;"># 9 - Move player</span>
+    <span style="color: #ff7700;font-weight:bold;">if</span> keys<span style="color: black;">[</span><span style="color: #ff4500;">0</span><span style="color: black;">]</span>:
+        playerpos<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span>-=<span style="color: #ff4500;">5</span>
+    <span style="color: #ff7700;font-weight:bold;">elif</span> keys<span style="color: black;">[</span><span style="color: #ff4500;">2</span><span style="color: black;">]</span>:
+        playerpos<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span>+=<span style="color: #ff4500;">5</span>
+    <span style="color: #ff7700;font-weight:bold;">if</span> keys<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span>:
+        playerpos<span style="color: black;">[</span><span style="color: #ff4500;">0</span><span style="color: black;">]</span>-=<span style="color: #ff4500;">5</span>
+    <span style="color: #ff7700;font-weight:bold;">elif</span> keys<span style="color: black;">[</span><span style="color: #ff4500;">3</span><span style="color: black;">]</span>:
+        playerpos<span style="color: black;">[</span><span style="color: #ff4500;">0</span><span style="color: black;">]</span>+=<span style="color: #ff4500;">5</span></pre></td></tr></tbody></table></div>
+
+<p>This code simply checks which of the keys are being pressed and adds or subtracts from the player’s x or y position (depending on the key pressed) to move the player. </p>
+<p>Run the game and you should get a player just like before. Try pressing WASD. Yay! It works.</p>
+<p><a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python/screenshot-3" rel="attachment wp-att-25468" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/screenshot-3-391x320.png" alt="" title="Make the Bunny Move" width="391" height="320" class="size-medium wp-image-25468"></a></p>
+<h2>Step 4: Turning the Bunny</h2>
+<p>Yes, your bunny now moves when you press keys but wouldn’t it be even cooler if you could use your mouse to rotate the bunny to face a direction of your choosing, so he’s not facing the same way all the time? It’s simple enough to implement using trigonometry.</p>
+<p>Take a look at the following illustration:</p>
+<p><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/trig-lesson.png" alt="" title="atan2" width="365" height="309" class="size-full wp-image-24976"></p>
+<p>In the above image, if (5,3) is the position of the bunny and (2,4) is the current position of the mouse, you can find the rotation angle (z) by applying the atan2 trigonometric function to the difference in distances between the two points. Of course, once you know the rotation angle, you can simply rotate the bunny accordingly. :]</p>
+<p>If you’re a bit confused about this part, don’t worry – you can continue on anyway. But this is why you should pay attention in Math class! :] You’ll use this stuff all the time in game programming.</p>
+<p>Now you need to apply this concept to your game. To do this, you can use the PyGame <em>Surface.rotate(degrees)</em> function. Incidentally, keep in mind that the Z value is in radians. :[</p>
+<p>The atan2 function comes from the Python math library. So add this to the end of section #1 first:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425211"><td class="code" id="p24252code11"><pre class="python" style="font-family:monospace;"><span style="color: #ff7700;font-weight:bold;">import</span> <span style="color: #dc143c;">math</span></pre></td></tr></tbody></table></div>
+
+<p>Then, replace the last line in section #6 (the player.blit line) with the following code:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425212"><td class="code" id="p24252code12"><pre class="python" style="font-family:monospace;">    <span style="color: #808080; font-style: italic;"># 6.1 - Set player position and rotation</span>
+    position = pygame.<span style="color: black;">mouse</span>.<span style="color: black;">get_pos</span><span style="color: black;">(</span><span style="color: black;">)</span>
+    angle = <span style="color: #dc143c;">math</span>.<span style="color: black;">atan2</span><span style="color: black;">(</span>position<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span>-<span style="color: black;">(</span>playerpos<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span>+<span style="color: #ff4500;">32</span><span style="color: black;">)</span>,position<span style="color: black;">[</span><span style="color: #ff4500;">0</span><span style="color: black;">]</span>-<span style="color: black;">(</span>playerpos<span style="color: black;">[</span><span style="color: #ff4500;">0</span><span style="color: black;">]</span>+<span style="color: #ff4500;">26</span><span style="color: black;">)</span><span style="color: black;">)</span>
+    playerrot = pygame.<span style="color: black;">transform</span>.<span style="color: black;">rotate</span><span style="color: black;">(</span>player, <span style="color: #ff4500;">360</span>-angle<span style="color: #66cc66;">*</span><span style="color: #ff4500;">57.29</span><span style="color: black;">)</span>
+    playerpos1 = <span style="color: black;">(</span>playerpos<span style="color: black;">[</span><span style="color: #ff4500;">0</span><span style="color: black;">]</span>-playerrot.<span style="color: black;">get_rect</span><span style="color: black;">(</span><span style="color: black;">)</span>.<span style="color: black;">width</span>/<span style="color: #ff4500;">2</span>, playerpos<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span>-playerrot.<span style="color: black;">get_rect</span><span style="color: black;">(</span><span style="color: black;">)</span>.<span style="color: black;">height</span>/<span style="color: #ff4500;">2</span><span style="color: black;">)</span>
+    screen.<span style="color: black;">blit</span><span style="color: black;">(</span>playerrot, playerpos1<span style="color: black;">)</span></pre></td></tr></tbody></table></div>
+
+<p>Let’s go through the basic structure of the above code. First you get the mouse and player positions. Then you feed those into the atan2 function. After that, you convert the angle received from the atan2 function from radians to degrees (multiply radians by approximately 57.29 or 360/2π). </p>
+<p>Since the bunny will be rotated, its position will change. So now you calculate the new bunny position and display the bunny on screen.</p>
+<p>Run the game again. If you use just the WASD keys, then the game should behave exactly like before. But if you move your mouse, the bunny rotates too. Cool!</p>
+<p><a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python/screenshot-10" rel="attachment wp-att-28127" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/screenshot-10-391x320.png" alt="" title="screenshot 10" width="391" height="320" class="aligncenter size-medium wp-image-28127"></a></p>
+<h2>Step 5: Shoot, Bunny, Shoot!</h2>
+<p>Now that your bunny’s moving around, it’s time to add a little more action. :] How about letting the bunny shoot enemies using arrows? This is no mild-mannered rabbit!</p>
+<p>This step is a bit more complicated because you have to keep track of all the arrows, update them, rotate them, and delete them when they go off-screen. </p>
+<p>First of all, add the necessary variables to the end of the initialization section, section #2:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425213"><td class="code" id="p24252code13"><pre class="python" style="font-family:monospace;">acc=<span style="color: black;">[</span><span style="color: #ff4500;">0</span>,<span style="color: #ff4500;">0</span><span style="color: black;">]</span>
+arrows=<span style="color: black;">[</span><span style="color: black;">]</span></pre></td></tr></tbody></table></div>
+
+<p>The first variable keeps track of the player’s accuracy and the second array tracks all the arrows. The accuracy variable is essentially a list of the number of shots fired and the number of badgers hit. Later, we will be using this information to calculate an accuracy percentage.</p>
+<p>Next, load the arrow image at the end of section #3:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425214"><td class="code" id="p24252code14"><pre class="python" style="font-family:monospace;">arrow = pygame.<span style="color: black;">image</span>.<span style="color: black;">load</span><span style="color: black;">(</span><span style="color: #483d8b;">"resources/images/bullet.png"</span><span style="color: black;">)</span></pre></td></tr></tbody></table></div>
+
+<p>Now when a user clicks the mouse, an arrow needs to fire. Add the following to the end of section #8 as a new event handler:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425215"><td class="code" id="p24252code15"><pre class="python" style="font-family:monospace;">        <span style="color: #ff7700;font-weight:bold;">if</span> event.<span style="color: #008000;">type</span>==pygame.<span style="color: black;">MOUSEBUTTONDOWN</span>:
+            position=pygame.<span style="color: black;">mouse</span>.<span style="color: black;">get_pos</span><span style="color: black;">(</span><span style="color: black;">)</span>
+            acc<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span>+=<span style="color: #ff4500;">1</span>
+            arrows.<span style="color: black;">append</span><span style="color: black;">(</span><span style="color: black;">[</span><span style="color: #dc143c;">math</span>.<span style="color: black;">atan2</span><span style="color: black;">(</span>position<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span>-<span style="color: black;">(</span>playerpos1<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span>+<span style="color: #ff4500;">32</span><span style="color: black;">)</span>,position<span style="color: black;">[</span><span style="color: #ff4500;">0</span><span style="color: black;">]</span>-<span style="color: black;">(</span>playerpos1<span style="color: black;">[</span><span style="color: #ff4500;">0</span><span style="color: black;">]</span>+<span style="color: #ff4500;">26</span><span style="color: black;">)</span><span style="color: black;">)</span>,playerpos1<span style="color: black;">[</span><span style="color: #ff4500;">0</span><span style="color: black;">]</span>+<span style="color: #ff4500;">32</span>,playerpos1<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span>+<span style="color: #ff4500;">32</span><span style="color: black;">]</span><span style="color: black;">)</span></pre></td></tr></tbody></table></div>
+
+<p>This code checks if the mouse was clicked and if it was, it gets the mouse position and calculates the arrow rotation based on the rotated player position and the cursor position. This rotation value is stored in the <em>arrows</em> array.</p>
+<p>Next, you have to actually draw the arrows on screen. Add the following code right after section #6.1:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425216"><td class="code" id="p24252code16"><pre class="python" style="font-family:monospace;">    <span style="color: #808080; font-style: italic;"># 6.2 - Draw arrows</span>
+    <span style="color: #ff7700;font-weight:bold;">for</span> bullet <span style="color: #ff7700;font-weight:bold;">in</span> arrows:
+        index=<span style="color: #ff4500;">0</span>
+        velx=<span style="color: #dc143c;">math</span>.<span style="color: black;">cos</span><span style="color: black;">(</span>bullet<span style="color: black;">[</span><span style="color: #ff4500;">0</span><span style="color: black;">]</span><span style="color: black;">)</span><span style="color: #66cc66;">*</span><span style="color: #ff4500;">10</span>
+        vely=<span style="color: #dc143c;">math</span>.<span style="color: black;">sin</span><span style="color: black;">(</span>bullet<span style="color: black;">[</span><span style="color: #ff4500;">0</span><span style="color: black;">]</span><span style="color: black;">)</span><span style="color: #66cc66;">*</span><span style="color: #ff4500;">10</span>
+        bullet<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span>+=velx
+        bullet<span style="color: black;">[</span><span style="color: #ff4500;">2</span><span style="color: black;">]</span>+=vely
+        <span style="color: #ff7700;font-weight:bold;">if</span> bullet<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span><span style="color: #66cc66;">&lt;</span>-<span style="color: #ff4500;">64</span> <span style="color: #ff7700;font-weight:bold;">or</span> bullet<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span><span style="color: #66cc66;">&gt;</span><span style="color: #ff4500;">640</span> <span style="color: #ff7700;font-weight:bold;">or</span> bullet<span style="color: black;">[</span><span style="color: #ff4500;">2</span><span style="color: black;">]</span><span style="color: #66cc66;">&lt;</span>-<span style="color: #ff4500;">64</span> <span style="color: #ff7700;font-weight:bold;">or</span> bullet<span style="color: black;">[</span><span style="color: #ff4500;">2</span><span style="color: black;">]</span><span style="color: #66cc66;">&gt;</span><span style="color: #ff4500;">480</span>:
+            arrows.<span style="color: black;">pop</span><span style="color: black;">(</span>index<span style="color: black;">)</span>
+        index+=<span style="color: #ff4500;">1</span>
+        <span style="color: #ff7700;font-weight:bold;">for</span> projectile <span style="color: #ff7700;font-weight:bold;">in</span> arrows:
+            arrow1 = pygame.<span style="color: black;">transform</span>.<span style="color: black;">rotate</span><span style="color: black;">(</span>arrow, <span style="color: #ff4500;">360</span>-projectile<span style="color: black;">[</span><span style="color: #ff4500;">0</span><span style="color: black;">]</span><span style="color: #66cc66;">*</span><span style="color: #ff4500;">57.29</span><span style="color: black;">)</span>
+            screen.<span style="color: black;">blit</span><span style="color: black;">(</span>arrow1, <span style="color: black;">(</span>projectile<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span>, projectile<span style="color: black;">[</span><span style="color: #ff4500;">2</span><span style="color: black;">]</span><span style="color: black;">)</span><span style="color: black;">)</span></pre></td></tr></tbody></table></div>
+
+<p>The <em>vely</em> and <em>velx</em> values are calculated using basic trigonometry. 10 is the speed of the arrows. The if statement just checks if the bullet is out of bounds and if it is, it deletes the arrow. The second for statement loops through the arrows and draws them with the correct rotation. </p>
+<p>Try and run the program. You should have a bunny that shoots arrows when you click the mouse! :D</p>
+<p><a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python/screenshot-5" rel="attachment wp-att-25470" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/screenshot-5-391x320.png" alt="" title="Shoot Bunny Shoot" width="391" height="320" class="size-medium wp-image-25470"></a></p>
+<h2>Step 6: Take Up Arms! Badgers!</h2>
+<p>OK, you have a castle and you have a hero who can move and shoot. So what’s missing? Enemies who attack the castle that the hero can shoot at!</p>
+<p><a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python/badger" rel="attachment wp-att-27840" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/Badger-320x320.jpg" alt="" title="Badger" width="320" height="320" class="aligncenter size-medium wp-image-27840"></a></p>
+<p>In this step, you’ll create randomly generated badgers that run at the castle. There will be more and more badgers as the game progresses. So, let’s make a list of what you’ll need it to do.</p>
+<ol>
+<li>Add bad guys to a list an array.</li>
+<li>Update the bad guy array each frame and check if they are off screen.</li>
+<li>Show the bad guys.</li>
+</ol>
+<p>Easy, right? :]</p>
+<p>First, add the following code to the end of section #2:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425217"><td class="code" id="p24252code17"><pre class="python" style="font-family:monospace;">badtimer=<span style="color: #ff4500;">100</span>
+badtimer1=<span style="color: #ff4500;">0</span>
+badguys=<span style="color: black;">[</span><span style="color: black;">[</span><span style="color: #ff4500;">640</span>,<span style="color: #ff4500;">100</span><span style="color: black;">]</span><span style="color: black;">]</span>
+healthvalue=<span style="color: #ff4500;">194</span></pre></td></tr></tbody></table></div>
+
+<p>The above sets up a timer (as well as a few other values) so that the game adds a new badger after some time has elapsed. You decrease the badtimer every frame until it is zero and then you spawn a new badger. </p>
+<p>Now add the following to the end of section #3:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425218"><td class="code" id="p24252code18"><pre class="python" style="font-family:monospace;">badguyimg1 = pygame.<span style="color: black;">image</span>.<span style="color: black;">load</span><span style="color: black;">(</span><span style="color: #483d8b;">"resources/images/badguy.png"</span><span style="color: black;">)</span>
+badguyimg=badguyimg1</pre></td></tr></tbody></table></div>
+
+<p>The first line above is similar to all the previous image-loading code. The second line sets up a copy of the image so that you can animate the bad guy much more easily.</p>
+<p>Next, you have to update and show the bad guys. Add this code right after section #6.2:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425219"><td class="code" id="p24252code19"><pre class="python" style="font-family:monospace;">    <span style="color: #808080; font-style: italic;"># 6.3 - Draw badgers</span>
+    <span style="color: #ff7700;font-weight:bold;">if</span> badtimer==<span style="color: #ff4500;">0</span>:
+        badguys.<span style="color: black;">append</span><span style="color: black;">(</span><span style="color: black;">[</span><span style="color: #ff4500;">640</span>, <span style="color: #dc143c;">random</span>.<span style="color: black;">randint</span><span style="color: black;">(</span><span style="color: #ff4500;">50</span>,<span style="color: #ff4500;">430</span><span style="color: black;">)</span><span style="color: black;">]</span><span style="color: black;">)</span>
+        badtimer=<span style="color: #ff4500;">100</span>-<span style="color: black;">(</span>badtimer1<span style="color: #66cc66;">*</span><span style="color: #ff4500;">2</span><span style="color: black;">)</span>
+        <span style="color: #ff7700;font-weight:bold;">if</span> badtimer1<span style="color: #66cc66;">&gt;</span>=<span style="color: #ff4500;">35</span>:
+            badtimer1=<span style="color: #ff4500;">35</span>
+        <span style="color: #ff7700;font-weight:bold;">else</span>:
+            badtimer1+=<span style="color: #ff4500;">5</span>
+    index=<span style="color: #ff4500;">0</span>
+    <span style="color: #ff7700;font-weight:bold;">for</span> badguy <span style="color: #ff7700;font-weight:bold;">in</span> badguys:
+        <span style="color: #ff7700;font-weight:bold;">if</span> badguy<span style="color: black;">[</span><span style="color: #ff4500;">0</span><span style="color: black;">]</span><span style="color: #66cc66;">&lt;</span>-<span style="color: #ff4500;">64</span>:
+            badguys.<span style="color: black;">pop</span><span style="color: black;">(</span>index<span style="color: black;">)</span>
+        badguy<span style="color: black;">[</span><span style="color: #ff4500;">0</span><span style="color: black;">]</span>-=<span style="color: #ff4500;">7</span>
+        index+=<span style="color: #ff4500;">1</span>
+    <span style="color: #ff7700;font-weight:bold;">for</span> badguy <span style="color: #ff7700;font-weight:bold;">in</span> badguys:
+        screen.<span style="color: black;">blit</span><span style="color: black;">(</span>badguyimg, badguy<span style="color: black;">)</span></pre></td></tr></tbody></table></div>
+
+<p>Lots of code to go over. :] The first line checks if <em>badtimer</em> is zero and if it is, creates a badger and sets <em>badtimer</em> up again based on how many times <em>badtimer</em> has run so far. The first for loop updates the x position of the badger, checks if the badger is off the screen, and removes the badger if it is offscreen. The second for loop draws all of the badgers.</p>
+<p>In order to use the random function in the above code, you also need to import the random library. So add the following to the end of section #1:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425220"><td class="code" id="p24252code20"><pre class="python" style="font-family:monospace;"><span style="color: #ff7700;font-weight:bold;">import</span> <span style="color: #dc143c;">random</span></pre></td></tr></tbody></table></div>
+
+<p>Finally, add this line right after the while statement (section #4) to decrement the value of <em>badtimer</em> for each frame:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425221"><td class="code" id="p24252code21"><pre class="python" style="font-family:monospace;">badtimer-=<span style="color: #ff4500;">1</span></pre></td></tr></tbody></table></div>
+
+<p>Try all of this code out by running the game. Now you should start seeing some real gameplay – you can shoot, move, turn, and badgers try to run at you. </p>
+<p><a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python/screen-shot-2012-12-15-at-10-16-43-pm" rel="attachment wp-att-28128" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/Screen-Shot-2012-12-15-at-10.16.43-PM-391x320.png" alt="" title="Screen Shot 2012-12-15 at 10.16.43 PM" width="391" height="320" class="aligncenter size-medium wp-image-28128"></a></p>
+<p>But wait! Why aren’t the badgers blowing up the castle? Let’s quickly add that in…</p>
+<p>Add this code right before the <em>index+=1</em> on the first for loop in section #6.3:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425222"><td class="code" id="p24252code22"><pre class="python" style="font-family:monospace;">        <span style="color: #808080; font-style: italic;"># 6.3.1 - Attack castle</span>
+        badrect=pygame.<span style="color: black;">Rect</span><span style="color: black;">(</span>badguyimg.<span style="color: black;">get_rect</span><span style="color: black;">(</span><span style="color: black;">)</span><span style="color: black;">)</span>
+        badrect.<span style="color: black;">top</span>=badguy<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span>
+        badrect.<span style="color: black;">left</span>=badguy<span style="color: black;">[</span><span style="color: #ff4500;">0</span><span style="color: black;">]</span>
+        <span style="color: #ff7700;font-weight:bold;">if</span> badrect.<span style="color: black;">left</span><span style="color: #66cc66;">&lt;</span><span style="color: #ff4500;">64</span>:
+            healthvalue -= <span style="color: #dc143c;">random</span>.<span style="color: black;">randint</span><span style="color: black;">(</span><span style="color: #ff4500;">5</span>,<span style="color: #ff4500;">20</span><span style="color: black;">)</span>
+            badguys.<span style="color: black;">pop</span><span style="color: black;">(</span>index<span style="color: black;">)</span>
+        <span style="color: #808080; font-style: italic;"># 6.3.3 - Next bad guy</span></pre></td></tr></tbody></table></div>
+
+<p>This code is fairly simple. If the badger’s x value is less than 64 to the right, then delete that bad guy and decrease the game health value by a random value between 5 and 20. (Later, you will display the current health value on screen.) </p>
+<p>If you build and run the program, you should get a bunch of attacking badgers who vanish when they hit the castle. Although you cannot see it, the badgers are actually lowering your health.</p>
+<p><a href="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/Screen-Shot-2012-12-18-at-6.00.31-PM.png" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/Screen-Shot-2012-12-18-at-6.00.31-PM.png" alt="" title="Screen Shot 2012-12-18 at 6.00.31 PM" width="638" height="500" class="alignnone size-full wp-image-28258"></a></p>
+<h2>Step 7: Collisions with Badgers and Arrows</h2>
+<p>The badgers are attacking your castle but your arrows have no effect on them! How’s a bunny supposed to defend his home?</p>
+<p>Time to set the arrows to kill the badgers so you can safeguard your castle and win the game! Basically, you have to loop through all of the bad guys and inside each of those loops, you have to loop through all of the arrows and check if they collide. If they do, then delete the badger, delete the arrow, and add one to your accuracy ratio.</p>
+<p>Right after section #6.3.1, add this:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425223"><td class="code" id="p24252code23"><pre class="python" style="font-family:monospace;">        <span style="color: #808080; font-style: italic;">#6.3.2 - Check for collisions</span>
+        index1=<span style="color: #ff4500;">0</span>
+        <span style="color: #ff7700;font-weight:bold;">for</span> bullet <span style="color: #ff7700;font-weight:bold;">in</span> arrows:
+            bullrect=pygame.<span style="color: black;">Rect</span><span style="color: black;">(</span>arrow.<span style="color: black;">get_rect</span><span style="color: black;">(</span><span style="color: black;">)</span><span style="color: black;">)</span>
+            bullrect.<span style="color: black;">left</span>=bullet<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span>
+            bullrect.<span style="color: black;">top</span>=bullet<span style="color: black;">[</span><span style="color: #ff4500;">2</span><span style="color: black;">]</span>
+            <span style="color: #ff7700;font-weight:bold;">if</span> badrect.<span style="color: black;">colliderect</span><span style="color: black;">(</span>bullrect<span style="color: black;">)</span>:
+                acc<span style="color: black;">[</span><span style="color: #ff4500;">0</span><span style="color: black;">]</span>+=<span style="color: #ff4500;">1</span>
+                badguys.<span style="color: black;">pop</span><span style="color: black;">(</span>index<span style="color: black;">)</span>
+                arrows.<span style="color: black;">pop</span><span style="color: black;">(</span>index1<span style="color: black;">)</span>
+            index1+=<span style="color: #ff4500;">1</span></pre></td></tr></tbody></table></div>
+
+<p>There’s only one important thing to note in this code. The if statement is a built-in PyGame function that checks if two rectangles intersect. The other couple of lines just do what I explained above. </p>
+<p>If you run the program, you should finally be able to shoot and kill the badgers.</p>
+<p><a href="http://cdn2.raywenderlich.com/wp-content/uploads/2012/12/Screen-Shot-2012-12-18-at-6.02.22-PM-2.png" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/Swcreen-Shot-2012-12-18-at-6.02.22-PM-2-480x271.png" alt="" title="Screen Shot 2012-12-18 at 6.02.22 PM (2)" width="480" height="271" class="alignnone size-medium wp-image-28259"></a></p>
+<h2>Step 8: Add a HUD with Health Meter and Clock</h2>
+<p>The game’s progressing pretty well. You have your attackers, and you have your defender. Now all you need is a way to keep score and to show how well the bunny is doing. </p>
+<p>The easiest way to do this is to add a HUD (Heads Up Display) that shows the current health level of the castle. You can also add a clock to show how long the castle has survived.</p>
+<p>First add the clock. Add the following code right before the beginning of section #7:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425224"><td class="code" id="p24252code24"><pre class="python" style="font-family:monospace;">    <span style="color: #808080; font-style: italic;"># 6.4 - Draw clock</span>
+    font = pygame.<span style="color: black;">font</span>.<span style="color: black;">Font</span><span style="color: black;">(</span><span style="color: #008000;">None</span>, <span style="color: #ff4500;">24</span><span style="color: black;">)</span>
+    survivedtext = font.<span style="color: black;">render</span><span style="color: black;">(</span><span style="color: #008000;">str</span><span style="color: black;">(</span><span style="color: black;">(</span><span style="color: #ff4500;">90000</span>-pygame.<span style="color: #dc143c;">time</span>.<span style="color: black;">get_ticks</span><span style="color: black;">(</span><span style="color: black;">)</span><span style="color: black;">)</span>/<span style="color: #ff4500;">60000</span><span style="color: black;">)</span>+<span style="color: #483d8b;">":"</span>+<span style="color: #008000;">str</span><span style="color: black;">(</span><span style="color: black;">(</span><span style="color: #ff4500;">90000</span>-pygame.<span style="color: #dc143c;">time</span>.<span style="color: black;">get_ticks</span><span style="color: black;">(</span><span style="color: black;">)</span><span style="color: black;">)</span>/<span style="color: #ff4500;">1000</span><span style="color: #66cc66;">%</span>60<span style="color: black;">)</span>.<span style="color: black;">zfill</span><span style="color: black;">(</span><span style="color: #ff4500;">2</span><span style="color: black;">)</span>, <span style="color: #008000;">True</span>, <span style="color: black;">(</span><span style="color: #ff4500;">0</span>,<span style="color: #ff4500;">0</span>,<span style="color: #ff4500;">0</span><span style="color: black;">)</span><span style="color: black;">)</span>
+    textRect = survivedtext.<span style="color: black;">get_rect</span><span style="color: black;">(</span><span style="color: black;">)</span>
+    textRect.<span style="color: black;">topright</span>=<span style="color: black;">[</span><span style="color: #ff4500;">635</span>,<span style="color: #ff4500;">5</span><span style="color: black;">]</span>
+    screen.<span style="color: black;">blit</span><span style="color: black;">(</span>survivedtext, textRect<span style="color: black;">)</span></pre></td></tr></tbody></table></div>
+
+<p>The above code simply creates a new font using the default PyGame font set to size 24. Then that font is used to render the text of the time onto a surface. After that, the text is positioned and drawn onscreen.</p>
+<p>Next add the health bar. But before drawing the health bar, you need to load the images for the bar. Add the following code to the end of section #3:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425225"><td class="code" id="p24252code25"><pre class="python" style="font-family:monospace;">healthbar = pygame.<span style="color: black;">image</span>.<span style="color: black;">load</span><span style="color: black;">(</span><span style="color: #483d8b;">"resources/images/healthbar.png"</span><span style="color: black;">)</span>
+health = pygame.<span style="color: black;">image</span>.<span style="color: black;">load</span><span style="color: black;">(</span><span style="color: #483d8b;">"resources/images/health.png"</span><span style="color: black;">)</span></pre></td></tr></tbody></table></div>
+
+<p>The first is the red image used for the full health bar. The second is the green image used to show the current health level.</p>
+<p>Now add the following code right after section #6.4 (which you just added) to draw the health bar on screen:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425226"><td class="code" id="p24252code26"><pre class="python" style="font-family:monospace;">    <span style="color: #808080; font-style: italic;"># 6.5 - Draw health bar</span>
+    screen.<span style="color: black;">blit</span><span style="color: black;">(</span>healthbar, <span style="color: black;">(</span><span style="color: #ff4500;">5</span>,<span style="color: #ff4500;">5</span><span style="color: black;">)</span><span style="color: black;">)</span>
+    <span style="color: #ff7700;font-weight:bold;">for</span> health1 <span style="color: #ff7700;font-weight:bold;">in</span> <span style="color: #008000;">range</span><span style="color: black;">(</span>healthvalue<span style="color: black;">)</span>:
+        screen.<span style="color: black;">blit</span><span style="color: black;">(</span>health, <span style="color: black;">(</span>health1+<span style="color: #ff4500;">8</span>,<span style="color: #ff4500;">8</span><span style="color: black;">)</span><span style="color: black;">)</span></pre></td></tr></tbody></table></div>
+
+<p>The code first draws the all-red health bar. Then it draws a certain amount of green over the bar, according to how much life the castle has remaining. </p>
+<p>If you build and run the program, you should have a timer and a health bar.</p>
+<p><a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python/screenshot-8" rel="attachment wp-att-25472" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/screenshot-8-391x320.png" alt="" title="HUD" width="391" height="320" class="size-medium wp-image-25472"></a></p>
+<h2>Step 9: Win or Lose</h2>
+<p>But what’s this? If you play for long enough, even if your health goes down to zero, the game still continues! Not just that, you can continue to shoot at the badgers, too. That isn’t going to work, now is it? You need some sort of a win/lose scenario to make the game worth playing.</p>
+<p>So let’s add the win and lose condition as well as the win or lose screen. :] You do this by exiting out of the main loop and going into a win/lose loop. In the win/lose loop, you have to figure out if the user won or lost and display the screen accordingly. </p>
+<p>Here is a basic outline of the win/lose scenarios:</p>
+<p>If time is up (90000 ms or 90 seconds) then:</p>
+<ul>
+<li>Stop running the game</li>
+<li>Set outcome of game to 1 or win</li>
+</ul>
+<p>If the castle is destroyed then:</p>
+<ul>
+<li>Stop running game</li>
+<li>Set outcome of game to 1 or win</li>
+</ul>
+<p>Calculate the accuracy either way.</p>
+<div class="note">
+<p><em>Note: </em>The acc[0]*1.0 is just converting acc[0] to a float. If you do not do this, the division operand will return an integer like 1 or 2 instead of a float like 1.5</p>
+</div>
+<p>Add these lines to the end of <em>game.py</em>:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425227"><td class="code" id="p24252code27"><pre class="python" style="font-family:monospace;">    <span style="color: #808080; font-style: italic;">#10 - Win/Lose check</span>
+    <span style="color: #ff7700;font-weight:bold;">if</span> pygame.<span style="color: #dc143c;">time</span>.<span style="color: black;">get_ticks</span><span style="color: black;">(</span><span style="color: black;">)</span><span style="color: #66cc66;">&gt;</span>=<span style="color: #ff4500;">90000</span>:
+        running=<span style="color: #ff4500;">0</span>
+        exitcode=<span style="color: #ff4500;">1</span>
+    <span style="color: #ff7700;font-weight:bold;">if</span> healthvalue<span style="color: #66cc66;">&lt;</span>=<span style="color: #ff4500;">0</span>:
+        running=<span style="color: #ff4500;">0</span>
+        exitcode=<span style="color: #ff4500;">0</span>
+    <span style="color: #ff7700;font-weight:bold;">if</span> acc<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span><span style="color: #66cc66;">!</span>=<span style="color: #ff4500;">0</span>:
+        accuracy=acc<span style="color: black;">[</span><span style="color: #ff4500;">0</span><span style="color: black;">]</span><span style="color: #66cc66;">*</span><span style="color: #ff4500;">1.0</span>/acc<span style="color: black;">[</span><span style="color: #ff4500;">1</span><span style="color: black;">]</span><span style="color: #66cc66;">*</span><span style="color: #ff4500;">100</span>
+    <span style="color: #ff7700;font-weight:bold;">else</span>:
+        accuracy=<span style="color: #ff4500;">0</span>
+<span style="color: #808080; font-style: italic;"># 11 - Win/lose display        </span>
+<span style="color: #ff7700;font-weight:bold;">if</span> exitcode==<span style="color: #ff4500;">0</span>:
+    pygame.<span style="color: black;">font</span>.<span style="color: black;">init</span><span style="color: black;">(</span><span style="color: black;">)</span>
+    font = pygame.<span style="color: black;">font</span>.<span style="color: black;">Font</span><span style="color: black;">(</span><span style="color: #008000;">None</span>, <span style="color: #ff4500;">24</span><span style="color: black;">)</span>
+    text = font.<span style="color: black;">render</span><span style="color: black;">(</span><span style="color: #483d8b;">"Accuracy: "</span>+<span style="color: #008000;">str</span><span style="color: black;">(</span>accuracy<span style="color: black;">)</span>+<span style="color: #483d8b;">"%"</span>, <span style="color: #008000;">True</span>, <span style="color: black;">(</span><span style="color: #ff4500;">255</span>,<span style="color: #ff4500;">0</span>,<span style="color: #ff4500;">0</span><span style="color: black;">)</span><span style="color: black;">)</span>
+    textRect = text.<span style="color: black;">get_rect</span><span style="color: black;">(</span><span style="color: black;">)</span>
+    textRect.<span style="color: black;">centerx</span> = screen.<span style="color: black;">get_rect</span><span style="color: black;">(</span><span style="color: black;">)</span>.<span style="color: black;">centerx</span>
+    textRect.<span style="color: black;">centery</span> = screen.<span style="color: black;">get_rect</span><span style="color: black;">(</span><span style="color: black;">)</span>.<span style="color: black;">centery</span>+<span style="color: #ff4500;">24</span>
+    screen.<span style="color: black;">blit</span><span style="color: black;">(</span>gameover, <span style="color: black;">(</span><span style="color: #ff4500;">0</span>,<span style="color: #ff4500;">0</span><span style="color: black;">)</span><span style="color: black;">)</span>
+    screen.<span style="color: black;">blit</span><span style="color: black;">(</span>text, textRect<span style="color: black;">)</span>
+<span style="color: #ff7700;font-weight:bold;">else</span>:
+    pygame.<span style="color: black;">font</span>.<span style="color: black;">init</span><span style="color: black;">(</span><span style="color: black;">)</span>
+    font = pygame.<span style="color: black;">font</span>.<span style="color: black;">Font</span><span style="color: black;">(</span><span style="color: #008000;">None</span>, <span style="color: #ff4500;">24</span><span style="color: black;">)</span>
+    text = font.<span style="color: black;">render</span><span style="color: black;">(</span><span style="color: #483d8b;">"Accuracy: "</span>+<span style="color: #008000;">str</span><span style="color: black;">(</span>accuracy<span style="color: black;">)</span>+<span style="color: #483d8b;">"%"</span>, <span style="color: #008000;">True</span>, <span style="color: black;">(</span><span style="color: #ff4500;">0</span>,<span style="color: #ff4500;">255</span>,<span style="color: #ff4500;">0</span><span style="color: black;">)</span><span style="color: black;">)</span>
+    textRect = text.<span style="color: black;">get_rect</span><span style="color: black;">(</span><span style="color: black;">)</span>
+    textRect.<span style="color: black;">centerx</span> = screen.<span style="color: black;">get_rect</span><span style="color: black;">(</span><span style="color: black;">)</span>.<span style="color: black;">centerx</span>
+    textRect.<span style="color: black;">centery</span> = screen.<span style="color: black;">get_rect</span><span style="color: black;">(</span><span style="color: black;">)</span>.<span style="color: black;">centery</span>+<span style="color: #ff4500;">24</span>
+    screen.<span style="color: black;">blit</span><span style="color: black;">(</span>youwin, <span style="color: black;">(</span><span style="color: #ff4500;">0</span>,<span style="color: #ff4500;">0</span><span style="color: black;">)</span><span style="color: black;">)</span>
+    screen.<span style="color: black;">blit</span><span style="color: black;">(</span>text, textRect<span style="color: black;">)</span>
+<span style="color: #ff7700;font-weight:bold;">while</span> <span style="color: #ff4500;">1</span>:
+    <span style="color: #ff7700;font-weight:bold;">for</span> event <span style="color: #ff7700;font-weight:bold;">in</span> pygame.<span style="color: black;">event</span>.<span style="color: black;">get</span><span style="color: black;">(</span><span style="color: black;">)</span>:
+        <span style="color: #ff7700;font-weight:bold;">if</span> event.<span style="color: #008000;">type</span> == pygame.<span style="color: black;">QUIT</span>:
+            pygame.<span style="color: black;">quit</span><span style="color: black;">(</span><span style="color: black;">)</span>
+            exit<span style="color: black;">(</span><span style="color: #ff4500;">0</span><span style="color: black;">)</span>
+    pygame.<span style="color: black;">display</span>.<span style="color: black;">flip</span><span style="color: black;">(</span><span style="color: black;">)</span></pre></td></tr></tbody></table></div>
+
+<p>This is the longest bit of code yet! But it’s not that complicated.</p>
+<p>The first if statement checks if the time is up. The second one checks if the castle is destroyed. The third one calculates your accuracy ratio. After that, a quick if statement checks if you won or lost and displays the correct image. </p>
+<p>Of course, if you want to display images for the win and lose screens, then those images have to be loaded first. So add the following code to the end of section #3:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425228"><td class="code" id="p24252code28"><pre class="python" style="font-family:monospace;">gameover = pygame.<span style="color: black;">image</span>.<span style="color: black;">load</span><span style="color: black;">(</span><span style="color: #483d8b;">"resources/images/gameover.png"</span><span style="color: black;">)</span>
+youwin = pygame.<span style="color: black;">image</span>.<span style="color: black;">load</span><span style="color: black;">(</span><span style="color: #483d8b;">"resources/images/youwin.png"</span><span style="color: black;">)</span></pre></td></tr></tbody></table></div>
+
+<p>One more quick thing. Change section #4 from:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425229"><td class="code" id="p24252code29"><pre class="python" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># 4 - keep looping through</span>
+<span style="color: #ff7700;font-weight:bold;">while</span> <span style="color: #ff4500;">1</span>:
+    badtimer-=<span style="color: #ff4500;">1</span></pre></td></tr></tbody></table></div>
+
+<p>To:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425230"><td class="code" id="p24252code30"><pre class="python" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># 4 - keep looping through</span>
+running = <span style="color: #ff4500;">1</span>
+exitcode = <span style="color: #ff4500;">0</span>
+<span style="color: #ff7700;font-weight:bold;">while</span> running:
+    badtimer-=<span style="color: #ff4500;">1</span></pre></td></tr></tbody></table></div>
+
+<p>The running variable keeps track of if the game is over and the exit code variable keeps track of whether the player won or lost.</p>
+<p>Run the game again and now you can either triumph or die trying! Cool. :]</p>
+<p><a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python/screenshot-9" rel="attachment wp-att-25473" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/screenshot-9-391x320.png" alt="" title="Game Over!" width="391" height="320" class="size-medium wp-image-25473"></a></p>
+<h2>Step 10: Gratuitous Music and Sound Effects!</h2>
+<p>The game’s looking pretty good but how does it sound? It’s a bit quiet, isn’t it? Adding some sound effects can change the whole feel of a game.</p>
+<p>PyGame makes loading and playing sounds super simple. First, you have to initialize the mixer by adding this at the end of section #2:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425231"><td class="code" id="p24252code31"><pre class="python" style="font-family:monospace;">pygame.<span style="color: black;">mixer</span>.<span style="color: black;">init</span><span style="color: black;">(</span><span style="color: black;">)</span></pre></td></tr></tbody></table></div>
+
+<p>Then load the sounds and set the volume level at the end of section #3:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425232"><td class="code" id="p24252code32"><pre class="python" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># 3.1 - Load audio</span>
+hit = pygame.<span style="color: black;">mixer</span>.<span style="color: black;">Sound</span><span style="color: black;">(</span><span style="color: #483d8b;">"resources/audio/explode.wav"</span><span style="color: black;">)</span>
+enemy = pygame.<span style="color: black;">mixer</span>.<span style="color: black;">Sound</span><span style="color: black;">(</span><span style="color: #483d8b;">"resources/audio/enemy.wav"</span><span style="color: black;">)</span>
+shoot = pygame.<span style="color: black;">mixer</span>.<span style="color: black;">Sound</span><span style="color: black;">(</span><span style="color: #483d8b;">"resources/audio/shoot.wav"</span><span style="color: black;">)</span>
+hit.<span style="color: black;">set_volume</span><span style="color: black;">(</span><span style="color: #ff4500;">0.05</span><span style="color: black;">)</span>
+enemy.<span style="color: black;">set_volume</span><span style="color: black;">(</span><span style="color: #ff4500;">0.05</span><span style="color: black;">)</span>
+shoot.<span style="color: black;">set_volume</span><span style="color: black;">(</span><span style="color: #ff4500;">0.05</span><span style="color: black;">)</span>
+pygame.<span style="color: black;">mixer</span>.<span style="color: black;">music</span>.<span style="color: black;">load</span><span style="color: black;">(</span><span style="color: #483d8b;">'resources/audio/moonlight.wav'</span><span style="color: black;">)</span>
+pygame.<span style="color: black;">mixer</span>.<span style="color: black;">music</span>.<span style="color: black;">play</span><span style="color: black;">(</span>-<span style="color: #ff4500;">1</span>, <span style="color: #ff4500;">0.0</span><span style="color: black;">)</span>
+pygame.<span style="color: black;">mixer</span>.<span style="color: black;">music</span>.<span style="color: black;">set_volume</span><span style="color: black;">(</span><span style="color: #ff4500;">0.25</span><span style="color: black;">)</span></pre></td></tr></tbody></table></div>
+
+<p>Most of the above code is simply loading the audio files and configuring the audio volume levels. But pay attention to the pygame.mixer.music.load line – that line loads the background music for the game and the next line sets the background music to repeat forever.</p>
+<p>That takes care of the audio configuration. :] Now all you need to do is to play the various sound effects as needed. Do that as per the directions in the comments for the code below:</p>
+
+<div class="wp_codebox"><table><tbody><tr id="p2425233"><td class="code" id="p24252code33"><pre class="python" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># section 6.3.1 after if badrect.left&lt;64:</span>
+hit.<span style="color: black;">play</span><span style="color: black;">(</span><span style="color: black;">)</span>
+<span style="color: #808080; font-style: italic;"># section 6.3.2 after if badrect.colliderect(bullrect):</span>
+enemy.<span style="color: black;">play</span><span style="color: black;">(</span><span style="color: black;">)</span>
+<span style="color: #808080; font-style: italic;"># section 8, after if event.type==pygame.MOUSEBUTTONDOWN:</span>
+shoot.<span style="color: black;">play</span><span style="color: black;">(</span><span style="color: black;">)</span></pre></td></tr></tbody></table></div>
+
+<p>Run the game one more time and you’ll notice that you now have background music and sound effects for collisions and shooting. The game feels that much more alive! :]</p>
+<h2>Where To Go From Here?</h2>
+<p>You should be proud of yourself: you have just finished creating a fun game packed with music, sound effects, a killer rabbit, kamikaze badgers and more. I told you you could do it! :]</p>
+<p>You can download the final source code for the game <a href="http://cdn2.raywenderlich.com/downloads/BB_FinalGame.zip" sl-processed="1">here</a>. </p>
+<p>At this point, feel free to extend this game into your own creation! Maybe try replacing the art with your own drawings, or adding different weapons or types of monsters into the game!</p>
+<p>Do you have any questions or comments about what you’ve done in this tutorial? If so, join the discussion in the forums! I would love to hear from you.</p>
+<p><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/JulianMeyer.jpg" class="photo alignleft"><br>
+<i>This is a post by Tutorial Team Member <a href="http://www.raywenderlich.com/?page_id=9#julianmeyer" sl-processed="1">Julian Meyer</a>, a 13-year-old python developer. </i></p>
+	
+					</div>
+					<footer>
+						<div class="social-links">
+			    			<ul>
+										    							<li class="twitter"><div id="tweetbutton24252m" class="tw_button" style="margin-bottom:10px;"><iframe id="twitter-widget-1" scrolling="no" frameborder="0" allowtransparency="true" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/tweet_button.9b77a1cb4bd14da06dfa5e2f65422c91.en(2).html" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="position: static; visibility: visible; width: 86px; height: 20px;"></iframe></div></li>
+		    															<li class="facebook"><div class="fb-like fb_iframe_widget" data-href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;container_width=90&amp;href=http%3A%2F%2Fwww.raywenderlich.com%2F24252%2Fbeginning-game-programming-for-teens-with-python&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=450"><span style="vertical-align: bottom; width: 77px; height: 20px;"><iframe name="f2bcef793" width="450px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/like(2).html" style="border: none; visibility: visible; width: 77px; height: 20px;" class=""></iframe></span></div></li>
+								<li class="facebook iframe-link"><iframe src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/tweet_button.9b77a1cb4bd14da06dfa5e2f65422c91.en.html" allowtransparency="true" frameborder="0" scrolling="no" style="width: 50px; height: 20px;"></iframe></li>
+			    			</ul>
+			    		</div>
+					</footer>
+				</article>
+				<div id="author-information" class="clearfix">
+					<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/arrow@2x.png" width="40" height="21" id="arrow">
+								
+							<div class="author-photo">
+								<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/f72d4c37b7a4c7ede045f3bcb696df49" alt="" width="100" height="100" class="user-avatar">							</div>
+							<div class="author-meta">
+									<a href="http://www.raywenderlich.com/u/jmeyer" sl-processed="1">Julian Meyer</a>									<p class="bio">Julian Meyer is a 13-year-old python programmer from Northern California. He has programmed <a href="http://pixelbuild.blogspot.com/" sl-processed="1">PixelBuild</a>, a simple block-building game and has his own blog about programming, arduino, and music <a href="http://julianscode.com/" sl-processed="1">here</a>.</p>	
+							</div>
+											
+								<ul class="follow-links">
+									<li class="twitter"><a href="http://www.twitter.com/jmeyer2k" target="_block" sl-processed="1">Follow Julian Meyer on Twitter</a></li>
+								</ul>
+								   				</div>
+   				<section id="comments">
+   					<div id="comment-login-module"><form method="post" action="http://www.raywenderlich.com/wp-content/themes/raywenderlich/bridgeapi/phpbb3/login-user.php"><input type="hidden" name="returnurl" value="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python"><div class="comment-area"><h2>Add a Comment</h2><p class="login-text">You need to login to make a comment. If you do not have an account, you can <a href="http://www.raywenderlich.com/login?section=new-account&returnurl=http://www.raywenderlich.com/wp-content/themes/raywenderlich/templates/comment_login_area.php?topicId=6318&forumId=20&pageNumber=1&returnURL=http%3A%2F%2Fwww.raywenderlich.com%2F24252%2Fbeginning-game-programming-for-teens-with-python&_=1437747306016" sl-processed="1">create one over here</a></p>Username: <input type="text" name="username" id="username" size="40"> &nbsp;&nbsp;&nbsp; Password: <input type="password" name="password" id="password" size="40"> &nbsp;&nbsp;&nbsp; <input type="submit" value="Log In" name="login" class="RWButton"> <input type="hidden" name="redirect" value="http://www.raywenderlich.com/wp-content/themes/raywenderlich/templates/comment_login_area.php?topicId=6318&amp;forumId=20&amp;pageNumber=1&amp;returnURL=http%3A%2F%2Fwww.raywenderlich.com%2F24252%2Fbeginning-game-programming-for-teens-with-python&amp;_=1437747306016#comments"><input type="hidden" name="phpbb_login_box" value="false"><p class="login-text">You can view the discussion in the forum <a href="http://www.raywenderlich.com/forums/viewtopic.php?f=20&t=6318" sl-processed="1">over here</a></p></div></form></div>
+<script>
+	jQuery(".comment-area").css("display", "none");
+	jQuery.ajax({
+		type : "GET",
+		data : { "topicId" : 6318, "forumId" : 20, "pageNumber" : 1, "returnURL" : "http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python" },
+		url : "http://www.raywenderlich.com/wp-content/themes/raywenderlich/templates/comment_login_area.php",
+		cache : false,
+	}).done(function(html) {
+		jQuery("#comment-login-module").html(html);	
+		console.log(html);
+	});
+</script>
+	<div id="article-comments" style="margin-top:20px;"><h2 id="user-comments">User Comments</h2><h2 id="comment-count">88 Comments</h2>		<div class="comment-pages top-pages"> 
+			[ <a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python?pn=1#comments" sl-processed="1">1</a> , <a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python?pn=2#comments" sl-processed="1">2</a> , <a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python?pn=3#comments" sl-processed="1">3</a> , <a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python?pn=4#comments" sl-processed="1">4</a> , <a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python?pn=5#comments" sl-processed="1">5</a> , <span>6</span> ]			</div>
+	
+	<ul id="user-comment-list" style="padding: 0 28px 0 0;">
+		<li><div class="comment">"for x in range(width/grass.get_width()+1):<br>
+TypeError: 'float' object cannot be interpreted as an integer" this error i get when i load the background grass<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/comment-quote@2x.png" width="22" height="12" class="quote-arrow"></div><a href="http://www.raywenderlich.com/u/aalekh95" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/bf19c4cf77e3be7bc652b23d568e5a90" alt="" width="100" height="100" data-site-url="http://www.raywenderlich.com/wp-content/themes/raywenderlich" class="user-avatar gravatar"></a><span class="author-details"><a href="http://www.raywenderlich.com/u/aalekh95" sl-processed="1">aalekh95</a> <span class="post-date">on February 8, 2015, 8:57 AM</span></span></li><li><div class="comment">I am also a Python Developer.<br>
+@Gozocathy, I think you should first check that Pygame is Correctly installed or not. <br>
+You can do that by easy steps:<br>
+1. Open IDLE<br>
+2. Type "import pygame" (without quotes) <br>
+3. then type "pygame.ver" (without quotes)<br>
+<br>
+If you get an answer similar to this:<br>
+'1.9.2pre'<br>
+that means pygame is correctly installed...<br>
+<br>
+Hope This Helps!<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/comment-quote@2x.png" width="22" height="12" class="quote-arrow"></div><a href="http://www.raywenderlich.com/u/Python%20Developer" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/895bc6d2a39b94002bbcf04f8a48ec33" alt="" width="100" height="100" data-site-url="http://www.raywenderlich.com/wp-content/themes/raywenderlich" class="user-avatar gravatar"></a><span class="author-details"><a href="http://www.raywenderlich.com/u/Python%20Developer" sl-processed="1">Python Developer</a> <span class="post-date">on March 20, 2015, 12:04 AM</span></span></li><li><div class="comment">Traceback (most recent call last):<br>
+  File "<pyshell#4>", line 1, in <module><br>
+    import pygame<br>
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/pygame/__init__.py", line 95, in <module><br>
+    from pygame.base import *<br>
+ImportError: dlopen(/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/pygame/base.so, 2): no suitable image found.  Did find:<br>
+	/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/pygame/base.so: no matching architecture in universal wrapper this is what I came up with<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/comment-quote@2x.png" width="22" height="12" class="quote-arrow"></module></module></pyshell#4></div><a href="http://www.raywenderlich.com/u/Death" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/cdceeb130fb57655ff4d11078f11892e" alt="" width="100" height="100" data-site-url="http://www.raywenderlich.com/wp-content/themes/raywenderlich" class="user-avatar gravatar"></a><span class="author-details"><a href="http://www.raywenderlich.com/u/Death" sl-processed="1">Death</a> <span class="post-date">on March 25, 2015, 12:57 PM</span></span></li><li><div class="comment">Hi, <br>
+When I run this, I only get one badger and then no more badgers spawn. Why is this?<br>
+Here is my code: <!-- m --><a class="postlink" href="http://pastebin.com/UWqmx993" sl-processed="1">http://pastebin.com/UWqmx993</a><!-- m --><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/comment-quote@2x.png" width="22" height="12" class="quote-arrow"></div><a href="http://www.raywenderlich.com/u/catquach234" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/5368e9d9741c0887775b8232b70daef0" alt="" width="100" height="100" data-site-url="http://www.raywenderlich.com/wp-content/themes/raywenderlich" class="user-avatar gravatar"></a><span class="author-details"><a href="http://www.raywenderlich.com/u/catquach234" sl-processed="1">catquach234</a> <span class="post-date">on March 27, 2015, 7:53 PM</span></span></li><li><div class="comment">Hey - I downloaded the resources folder twice (BB_Resources.zip), but its giving error when i try opening it.<br>
+<br>
+It says the folder is invalid.<br>
+<br>
+Is there another link to the resource folder?<br>
+<br>
+Thanks in advance<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/comment-quote@2x.png" width="22" height="12" class="quote-arrow"></div><a href="http://www.raywenderlich.com/u/Khusro" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/4018a7d4f7ef930218d2590abe795459" alt="" width="100" height="100" data-site-url="http://www.raywenderlich.com/wp-content/themes/raywenderlich" class="user-avatar gravatar"></a><span class="author-details"><a href="http://www.raywenderlich.com/u/Khusro" sl-processed="1">Khusro</a> <span class="post-date">on March 28, 2015, 1:11 PM</span></span></li><li><div class="comment">Can I have help with this? This is occurring. <br>
+&gt;&gt;&gt; import pygame<br>
+Traceback (most recent call last):<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/comment-quote@2x.png" width="22" height="12" class="quote-arrow"></div><a href="http://www.raywenderlich.com/u/Python_newbie" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/3ae3fe473f74db0cebaf3082e4c62817" alt="" width="100" height="100" data-site-url="http://www.raywenderlich.com/wp-content/themes/raywenderlich" class="user-avatar gravatar"></a><span class="author-details"><a href="http://www.raywenderlich.com/u/Python_newbie" sl-processed="1">Python_newbie</a> <span class="post-date">on April 25, 2015, 5:55 AM</span></span></li><li><div class="comment">Can I have help with this? This is occurring. <br>
+&gt;&gt;&gt; import pygame<br>
+Traceback (most recent call last): <br>
+ File "<stdin>". line 1. in <module><br>
+ImportError: No module named pygame<br>
+&gt;&gt;&gt;<br>
+What do I do? Thanks so much.<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/comment-quote@2x.png" width="22" height="12" class="quote-arrow"></module></stdin></div><a href="http://www.raywenderlich.com/u/Python_newbie" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/3ae3fe473f74db0cebaf3082e4c62817" alt="" width="100" height="100" data-site-url="http://www.raywenderlich.com/wp-content/themes/raywenderlich" class="user-avatar gravatar"></a><span class="author-details"><a href="http://www.raywenderlich.com/u/Python_newbie" sl-processed="1">Python_newbie</a> <span class="post-date">on April 25, 2015, 5:57 AM</span></span></li><li><div class="comment">*correction of line 4 of my comment*<br>
+ File "<stdin>", line 1, in <module><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/comment-quote@2x.png" width="22" height="12" class="quote-arrow"></module></stdin></div><a href="http://www.raywenderlich.com/u/Python_newbie" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/3ae3fe473f74db0cebaf3082e4c62817" alt="" width="100" height="100" data-site-url="http://www.raywenderlich.com/wp-content/themes/raywenderlich" class="user-avatar gravatar"></a><span class="author-details"><a href="http://www.raywenderlich.com/u/Python_newbie" sl-processed="1">Python_newbie</a> <span class="post-date">on April 25, 2015, 5:59 AM</span></span></li><li><div class="comment">Traceback (most recent call last):<br>
+  File "<pyshell#0>", line 1, in <module><br>
+    import pygame<br>
+  File "C:\Python27\lib\site-packages\pygame\__init__.py", line 95, in <module><br>
+    from pygame.base import *<br>
+ImportError: DLL load failed: The specified module could not be found.<br>
+<br>
+What do I do<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/comment-quote@2x.png" width="22" height="12" class="quote-arrow"></module></module></pyshell#0></div><a href="http://www.raywenderlich.com/u/SRM" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/6a0a13ee7b100b1a164334dceee0339c" alt="" width="100" height="100" data-site-url="http://www.raywenderlich.com/wp-content/themes/raywenderlich" class="user-avatar gravatar"></a><span class="author-details"><a href="http://www.raywenderlich.com/u/SRM" sl-processed="1">SRM</a> <span class="post-date">on May 8, 2015, 5:37 AM</span></span></li><li><div class="comment">Hi Julian, I am on windows 7 and installed pygame for python 2.7 using pygame-1.9.1.win32-py2.7.msi 3.1MB. It extracted by unzipping the contents and I left it in the default location. I'm still getting a no pygame error. Any advice apprecaited<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/comment-quote@2x.png" width="22" height="12" class="quote-arrow"></div><a href="http://www.raywenderlich.com/u/theRegexKing" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/85e13dc308398cf8f737f27936064c46" alt="" width="100" height="100" data-site-url="http://www.raywenderlich.com/wp-content/themes/raywenderlich" class="user-avatar gravatar"></a><span class="author-details"><a href="http://www.raywenderlich.com/u/theRegexKing" sl-processed="1">theRegexKing</a> <span class="post-date">on June 22, 2015, 6:06 PM</span></span></li><li><div class="comment">for bullet in arrows:<br>
+        index=0<br>
+        velx=math.cos(bullet[0])*10<br>
+        vely=math.sin(bullet[0])*10<br>
+        bullet[1]+=velx<br>
+        bullet[2]+=vely<br>
+        if bullet[1]&lt;-64 or bullet[1]&gt;640 or bullet[2]&lt;-64 or bullet[2]&gt;480:<br>
+            arrows.pop(index)<br>
+        index+=1<br>
+        arrow1 = pygame.transform.rotate(arrow, 360-bullet[0]*57.29)<br>
+        screen.blit(arrow1, (bullet[1], bullet[2]))<br>
+i think this is enough in drwaing arrows<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/comment-quote@2x.png" width="22" height="12" class="quote-arrow"></div><a href="http://www.raywenderlich.com/u/alekhajohn" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/c15264499780a26f2dd9ebe2608da47e" alt="" width="100" height="100" data-site-url="http://www.raywenderlich.com/wp-content/themes/raywenderlich" class="user-avatar gravatar"></a><span class="author-details"><a href="http://www.raywenderlich.com/u/alekhajohn" sl-processed="1">alekhajohn</a> <span class="post-date">on July 21, 2015, 7:29 AM</span></span></li><li><div class="comment">for bullet in arrows:<br>
+        index=0<br>
+        velx=math.cos(bullet[0])*10<br>
+        vely=math.sin(bullet[0])*10<br>
+        bullet[1]+=velx<br>
+        bullet[2]+=vely<br>
+        if bullet[1]&lt;-64 or bullet[1]&gt;640 or bullet[2]&lt;-64 or bullet[2]&gt;480:<br>
+            arrows.pop(index)<br>
+        index+=1<br>
+        arrow1 = pygame.transform.rotate(arrow, 360-bullet[0]*57.29)<br>
+        screen.blit(arrow1, (bullet[1], bullet[2]))<br>
+i think this is enough to draw the arrows. why one more for loop.<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/comment-quote@2x.png" width="22" height="12" class="quote-arrow"></div><a href="http://www.raywenderlich.com/u/alekhajohn" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/c15264499780a26f2dd9ebe2608da47e" alt="" width="100" height="100" data-site-url="http://www.raywenderlich.com/wp-content/themes/raywenderlich" class="user-avatar gravatar"></a><span class="author-details"><a href="http://www.raywenderlich.com/u/alekhajohn" sl-processed="1">alekhajohn</a> <span class="post-date">on July 21, 2015, 7:30 AM</span></span></li><li><div class="comment">I am getting the same error as aalekh95:<br>
+"for x in range(width/grass.get_width()+1):<br>
+TypeError: 'float' object cannot be interpreted as an integer" this error i get when i load the background grass<br>
+I have installed pygame correctly and checked and double-checked for that.<br>
+Can anyone help me?<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/comment-quote@2x.png" width="22" height="12" class="quote-arrow"></div><a href="http://www.raywenderlich.com/u/AmKoIr" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/d6b668ad72790f80ce5e8afc0811860d" alt="" width="100" height="100" data-site-url="http://www.raywenderlich.com/wp-content/themes/raywenderlich" class="user-avatar gravatar"></a><span class="author-details"><a href="http://www.raywenderlich.com/u/AmKoIr" sl-processed="1">AmKoIr</a> <span class="post-date">on July 22, 2015, 6:15 AM</span></span></li>	</ul>
+	<div class="comment-pages bottom-pages">[ <a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python?pn=1#comments" sl-processed="1">1</a> , <a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python?pn=2#comments" sl-processed="1">2</a> , <a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python?pn=3#comments" sl-processed="1">3</a> , <a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python?pn=4#comments" sl-processed="1">4</a> , <a href="http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python?pn=5#comments" sl-processed="1">5</a> , <span>6</span> ]</div></div>
+	<script type="text/javascript">
+		var razewareConfig = {
+			pagingAmount : 15,
+			topic_id : 6318,
+			themeUrl: '/wp-content/themes/raywenderlich',
+			non: 'asdf,'
+		};
+		jQuery.ajax({
+			type : "GET",
+				data : { "topic_id" : 6318, "curl" : "http://www.raywenderlich.com/24252/beginning-game-programming-for-teens-with-python" },
+				url : "http://www.raywenderlich.com/wp-content/themes/raywenderlich/templates/comment_section.php",
+				cache : false,
+			}).done(function(html) {
+				jQuery("#article-comments").html(html);	
+				jQuery("#comments .comment-pages.top-pages a").each(function(index) {	
+					jQuery(this).click(function() {
+						jQuery("#pageNumber").attr("value", index+1);
+						razewareComments.getComments(jQuery(this).text());
+						return false;
+					});
+				});
+				jQuery("#comments .comment-pages.bottom-pages a").each(function(index) {	
+					jQuery(this).click(function() {
+						jQuery("#pageNumber").attr("value", index+1);
+						razewareComments.getComments(jQuery(this).text());
+						var target = this.hash,
+					    $target = jQuery(target);
+					    jQuery('html, body').stop().animate({
+					        'scrollTop': $target.offset().top
+					    }, 900, 'swing', function () {
+					        window.location.hash = target;
+					    });
+						return false;
+					});
+				});
+			});
+		
+	</script>
+   				</section>
+			</div>
+		</div>
+	</div>
+	<section id="secondary">
+	<h1 id="other-items-of-interest">Other Items of Interest</h1>
+	<section id="newsletter-signup" class="rw-module">
+		<header>
+			<h1>Ray's Monthly Newsletter</h1>
+		</header>
+		<div>
+			<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/starter-kit@2x.png" width="109" height="139">
+			<p>Sign up to receive a monthly newsletter with my favorite dev links, and receive a <em>free epic-length tutorial</em> as a bonus!</p>
+			<img src="">
+			<form novalidate="" target="_blank" class="validate" name="mc-embedded-subscribe-form" id="mc-embedded-subscribe-form" method="post" action="http://raywenderlich.us1.list-manage.com/subscribe/post?u=1bc8e630b1599df629818e59b&id=83b6edc87f">
+				<input type="text" id="mce-NAME" class="required" name="NAME" value="" placeholder="Your full name">
+				<input type="email" id="mce-EMAIL" class="required email" name="EMAIL" value="" placeholder="Your best email">
+				<input type="submit" class="button" id="mc-embedded-subscribe" name="subscribe" value="Sign Up!">
+			</form>
+		</div>
+	</section>
+	<section id="site-ads">
+		<h1>Advertise with Us!</h1>
+		<!-- BuySellAds.com Ad Code -->
+		<!-- End BuySellAds.com Ad Code -->
+		<!-- BuySellAds Zone Code -->
+
+
+	        <div id="bsap_1274837" class="bsap bsap_1274837" data-serve="CV7IEKV">
+<style type="text/css">
+div.bsap_1274837{width:100%;display:block;}div.bsap_1274837 a{width:300px;}div.bsap_1274837 a img{padding:0;}div.bsap_1274837 a em{font-style:normal;}div.bsap_1274837 a{display:block;font-size:11px;color:#888;font-family:verdana,sans-serif;margin:0;text-align:center;text-decoration:none;overflow:hidden;float:left;margin-bottom:10px;}
+div.bsap_1274837 img{border:0;clear:right;}
+div.bsap_1274837 a.adhere{color:#666;font-weight:bold;font-size:12px;border:1px solid #ccc;background:#e7e7e7;text-align:center;}
+div.bsap_1274837 a.adhere:hover{border:1px solid #999;background:#ddd;color:#333;}div.bsap_1274837 a{line-height:100%;}div.bsap_1274837 a.adhere{width:300px;height:250px;line-height:2000%;}html>body div.bsap_1274837 a.adhere{width:298px;height:248px;}div.bsap_1274837 img.s{height:0;width:0;}div.bsap_1274837{line-height:9px;}div.bsap_1274837 .bsap_adhere a{height:19px !important;width:298px !important;font-size:10px;background:#f1f1f1;border:1px solid #e1e1e1;border-top:none;border-radius: 0 0 2px 2px;line-height:16px;}.bsap_backfillframe{border:0;}
+</style>
+<iframe width="300" height="250" id="ad_5932140_frame" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/raw_3e3d2e5a004a03fa8bff23789ea6a36e.html" frameborder="0" class="bsap_adframe" scrolling="no"></iframe>
+
+<script type="text/javascript" id="auto_1" class="ignoreme"> if (typeof(_bsap_serving_callback) !== 'undefined') _bsap_serving_callback(36974, 'CV7IEKV', ''); </script>
+<script type="text/javascript" id="auto_2" class="ignoreme"> if (typeof(BSACallback) !== 'undefined') BSACallback(); </script></div>
+	        <!-- End BuySellAds Zone Code -->
+
+	        <!-- BuySellAds.com Zone Code -->
+	        <div id="smallads">
+	        	<div id="bsap_1260352" class="bsap bsap_1260352" data-serve="CV7I55V">
+<style type="text/css">
+div.bsap_1260352{width:100%;display:block;}div.bsap_1260352 a{width:125px;}div.bsap_1260352 a img{padding:0;}div.bsap_1260352 a em{font-style:normal;}div.bsap_1260352 a{display:block;font-size:11px;color:#888;font-family:verdana,sans-serif;margin:0;text-align:center;text-decoration:none;overflow:hidden;float:left;}
+div.bsap_1260352 img{border:0;clear:right; }
+div.bsap_1260352 a.adhere{color:#666;font-weight:bold;font-size:12px;border:1px solid #ccc;background:#e7e7e7;text-align:center;}
+div.bsap_1260352 a.adhere:hover{border:1px solid #999;background:#ddd;color:#333;}div.bsap_1260352 a{line-height:100%;}div.bsap_1260352 a.adhere{width:125px;height:125px;line-height:1000%;}html>body div.bsap_1260352 a.adhere{width:123px;height:123px;}div.bsap_1260352 img.s{height:0;width:0;}
+</style>
+<a href="http://srv.buysellads.com/ads/click/x/GTND423ICASIV53NCWYLYKQWCKSI5K7MFTYIPZ3JCE7I527YCTAICK3KC6BDC27UCESDVK3EHJNCLSIZ" class="ad0 odd " title="MacStadium Dedicated Servers" id="bsa_5447141" target="_blank" rel="nofollow" sl-processed="1">
+<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/258178-1423855386.jpg" width="125" height="125" alt=""></a><a href="http://srv.buysellads.com/ads/click/x/GTND423ICASIV53NCWYLYKQWCKSI52QIF6AI5Z3JCE7I527MCAADVKJKC6BDC27UCESDVK3EHJNCLSIZ" class="ad1  even" title="iOS Starter Kits and Development Tutorials" id="bsa_2489343" target="_blank" rel="nofollow" sl-processed="1">
+<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/199003-1385605563.jpg" width="125" height="125" alt=""></a><a href="http://srv.buysellads.com/ads/click/x/GTND423ICASIV53NCWYLYKQWCKSI52QIF6AIVZ3JCE7I527MCAADC53KC6BDC27UCESDVK3EHJNCLSIZ" class="ad2 odd " title="Get Real User Feedback on Your App. Test Icons, Screenshots and More.- Trusted by 1000&#39;s of Developers." id="bsa_3635929" target="_blank" rel="nofollow" sl-processed="1">
+<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/256089-1422516818.png" width="125" height="125" alt=""></a><!-- no ad --><a href="http://srv.buysellads.com/ads/click/x/GTND423ICASIV53NCWYLYKQWCKSI52QIF6AI6Z3JCE7I527MCAADC2JKC6BDC27UCESDVK3EHJNCLSIZ" class="ad4  even" title="Get Reviews and Ratings for your iOS and Android apps from Engaged Users - Trusted by 1000&#39;s of Developers." id="bsa_3635927" target="_blank" rel="nofollow" sl-processed="1">
+<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/253663-1421074119.png" width="125" height="125" alt=""></a><a href="http://srv.buysellads.com/ads/click/x/GTND423ICASIV53NCWYLYKQWCKSI5277F6ADCZ3JCE7I527UCTSDLK3KC6BDC27UCESDVK3EHJNCLSIZ" class="ad5 odd " title="Appstore reviews for you free or paid app in any country from 3$" id="bsa_5898871" target="_blank" rel="nofollow" sl-processed="1">
+<img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/274644-1434857651.jpg" width="125" height="125" alt=""></a>
+
+<a href="http://buysellads.com/buy/detail/45973/zone/1260352?utm_source=site_45973&utm_medium=website&utm_campaign=imagetext&utm_content=zone_1260352" class="adhere" sl-processed="1">Advertise Here</a>
+
+
+<script type="text/javascript" id="auto_1" class="ignoreme"> if (typeof(BSACallback) !== 'undefined') BSACallback(); </script></div>
+	        	<div style="clear:both"></div>
+	        </div>
+	        <div id="razeware_ads">
+	        	<a href="https://itunes.apple.com/us/app/math-ninja-hd/id370144476?mt=8&uo=4&at=11ld4k" target="_blank" class="razewareads" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/MathNinja_125.gif" width="125" height="125" style="margin-left:15px"></a>
+	        	<!--<a href="https://itunes.apple.com/us/app/instant-poetry-2/id925723441?ls=1&mt=8&uo=8&at=11ld4k" target="_blank" class="razewareads"><img src="http://cdn1.raywenderlich.com/downloads/InstantPoetry-ad-125x125.gif" width="125" height="125" style="margin-left:15px"></a>-->
+	        	<a href="http://pragmaconference.com/" target="_blank" class="razewareads" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/Pragma2015Ad.png" width="125" height="125" style="margin-left:15px"></a>
+
+	        </div>
+
+	        <!-- End BuySellAds.com Zone Code -->
+	        <a href="http://www.raywenderlich.com/advertise" class="rw-button2" id="advertise-with-us" sl-processed="1">Advertise Here!</a>
+	</section>
+
+	<!--
+	<section id="rwdevcon" class="rw-module">
+	<a href="http://www.rwdevcon.com"><img src="http://cdn1.raywenderlich.com/downloads/rwdevcon-website-ad.jpg"/></a>
+	</section>
+	//-->
+
+	<!--<section id="site-poll" class="rw-module">
+		<header>
+			<h1>Vote for Our Next Tutorial!</h1>
+		</header>
+						<div id="recent-posts" class="sidebar-entry">
+	            <p>Every week, we alternate between Gaming and Non-Gaming tutorial votes.  This week: Gaming!</p>
+	            <ul>
+	                <div id="polls-92" class="wp-polls">
+	<form id="polls_form_92" class="wp-polls-form" action="/index.php" method="post">
+		<p style="display: none;"><input type="hidden" id="poll_92_nonce" name="wp-polls-nonce" value="b375d5ffd5" /></p>
+		<p style="display: none;"><input type="hidden" name="poll_id" value="92" /></p>
+		<div id="polls-92-ans" class="wp-polls-ans"><ul class="wp-polls-ul">
+		<li><input type="radio" id="poll-answer-565" name="poll_92" value="565" /> <label class="poll-answer-label" for="poll-answer-565">How To Make a Game Like Candy Crush with Unity 2D</label></li>
+		<li><input type="radio" id="poll-answer-566" name="poll_92" value="566" /> <label class="poll-answer-label" for="poll-answer-566">How To Make a Simple 3D Game with Scene Kit</label></li>
+		<li><input type="radio" id="poll-answer-567" name="poll_92" value="567" /> <label class="poll-answer-label" for="poll-answer-567">Adding iAds to a Sprite Kit Game</label></li>
+		<li><input type="radio" id="poll-answer-568" name="poll_92" value="568" /> <label class="poll-answer-label" for="poll-answer-568">Adding In-App Purchases into a Sprite Kit Game</label></li>
+		<li><input type="radio" id="poll-answer-569" name="poll_92" value="569" /> <label class="poll-answer-label" for="poll-answer-569">Adding In-App Purchases into a Unity 2D Game</label></li>
+		<li><input type="radio" id="poll-answer-570" name="poll_92" value="570" /> <label class="poll-answer-label" for="poll-answer-570">Updated Tutorial for Cocos2D-X</label></li>
+		</ul><p><input type="button" id="vote" name="vote" value="CAST YOUR VOTE" class="Buttons" onclick="poll_vote(92);" /></p></div>
+	</form>
+</div>
+<div id="polls-92-loading" class="wp-polls-loading"><img src="http://www.raywenderlich.com/wp-content/plugins/wp-polls/images/loading.gif" width="16" height="16" alt="Loading ..." title="Loading ..." class="wp-polls-image" />&nbsp;Loading ...</div>
+	            </ul>
+
+	    		<p><em>Last week's winner</em>:<span class="next-weeks-tutorial"> Core Data Sync.</span>				<p class="suggest-a-tutorial"><a href="http://www.raywenderlich.com/forums/viewtopic.php?f=2&t=284">Suggest a Tutorial</a> - <a href="http://www.raywenderlich.com/tutorial-vote-results">Past Results</a></p>
+	        </div>
+	        	</section>-->
+
+	<!--<section id="site-poll" class="rw-module">
+		<header>
+			<h1>Hang Out With Us!</h1>
+		</header>
+			<div class="sidebar-entry">
+	            <p>Every month, we have a free live Tech Talk - come hang out with us!</p><br/>
+	            <p>Coming up in March: View Debugging with Xcode and Reveal.</p>
+	            <a href="https://plus.google.com/u/0/events/ck7m53i0ed07lj4mlc5jaqq0nt0" class="rw-button2">Sign Up - March</a>
+	        </div>
+	</section>-->
+
+	<!--<section id="site-poll" class="rw-module">
+		<header>
+			<h1>Our Next Book!</h1>
+		</header>
+						<div id="recent-posts" class="sidebar-entry">
+	            <p>We are considering writing a new book on game programming with Sprite Kit and Swift, more tailored toward intermediate or advanced readers.</p>
+	            <p>Would this be something you'd be interested in, and if so which option would you prefer?</p>
+	            <ul>
+	                <div id="polls-93" class="wp-polls">
+	<form id="polls_form_93" class="wp-polls-form" action="/index.php" method="post">
+		<p style="display: none;"><input type="hidden" id="poll_93_nonce" name="wp-polls-nonce" value="18c72dae26" /></p>
+		<p style="display: none;"><input type="hidden" name="poll_id" value="93" /></p>
+		<div id="polls-93-ans" class="wp-polls-ans"><ul class="wp-polls-ul">
+		<li><input type="radio" id="poll-answer-571" name="poll_93" value="571" /> <label class="poll-answer-label" for="poll-answer-571">Game Programming Recipes in Sprite Kit and Swift</label></li>
+		<li><input type="radio" id="poll-answer-572" name="poll_93" value="572" /> <label class="poll-answer-label" for="poll-answer-572">AI Programming for Games in Sprite Kit and Swift</label></li>
+		<li><input type="radio" id="poll-answer-573" name="poll_93" value="573" /> <label class="poll-answer-label" for="poll-answer-573">Neither - Not a game programmer</label></li>
+		<li><input type="radio" id="poll-answer-574" name="poll_93" value="574" /> <label class="poll-answer-label" for="poll-answer-574">Neither - Don't like Sprite Kit</label></li>
+		<li><input type="radio" id="poll-answer-575" name="poll_93" value="575" /> <label class="poll-answer-label" for="poll-answer-575">Neither - Don't like Swift</label></li>
+		<li><input type="radio" id="poll-answer-576" name="poll_93" value="576" /> <label class="poll-answer-label" for="poll-answer-576">Neither - Would prefer a different Sprite Kit/Swift book</label></li>
+		</ul><p><input type="button" id="vote" name="vote" value="CAST YOUR VOTE" class="Buttons" onclick="poll_vote(93);" /></p></div>
+	</form>
+</div>
+<div id="polls-93-loading" class="wp-polls-loading"><img src="http://www.raywenderlich.com/wp-content/plugins/wp-polls/images/loading.gif" width="16" height="16" alt="Loading ..." title="Loading ..." class="wp-polls-image" />&nbsp;Loading ...</div>
+	            </ul>
+	        </div>
+	        	</section>-->
+
+	<section id="our-books" class="rw-module">
+		<header>
+			<h1>Our Books</h1>
+		</header>
+		<div>
+			<ul class="books">
+				<li><a href="http://www.raywenderlich.com/store/platformer-game-starter-kit" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/pgsk@2x.png" width="110" height="142"></a></li><li><a href="http://www.raywenderlich.com/store/ios-games-by-tutorials" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/skt@2x.png" width="110" height="142"></a></li><li><a href="http://www.raywenderlich.com/store/ios-apprentice" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/ia1234@2x.png" width="110" height="142"></a></li><li><a href="http://www.raywenderlich.com/store/watchkit-by-tutorials" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/awt@2x.png" width="110" height="142"></a></li><li><a href="http://www.raywenderlich.com/store/swift-by-tutorials" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/swt@2x.png" width="110" height="142"></a></li><li><a href="http://www.raywenderlich.com/store/space-game-starter-kit-2" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/sgsk@2x.png" width="110" height="142"></a></li><li><a href="http://www.raywenderlich.com/store/ios-6-by-tutorials" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/i6t@2x.png" width="110" height="142"></a></li><li><a href="http://www.raywenderlich.com/store/core-data-by-tutorials" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/cdt@2x.png" width="110" height="142"></a></li><li><a href="http://www.raywenderlich.com/store/ios-animations-by-tutorials" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/iat@2x.png" width="110" height="142"></a></li><li><a href="http://www.raywenderlich.com/store/ios-7-by-tutorials" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/i7t@2x.png" width="110" height="142"></a></li><li><a href="http://www.raywenderlich.com/store/ios-8-by-tutorials" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/i8t@2x.png" width="110" height="142"></a></li><li><a href="http://www.raywenderlich.com/store/beat-em-up-game-starter-kit" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/bgsk@2x.png" width="110" height="142"></a></li>			</ul>
+		</div>
+	</section>
+
+	
+	<section id="tutorial-team" class="rw-module">
+		<header>
+			<h1>Our Team</h1>
+		</header>
+		<div>
+			<h2>Swift Team</h2><ul><li><a href="http://www.raywenderlich.com/about#rcacheaux" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/47245.jpg" width="100" height="100" class="user-avatar"></a></li><li><a href="http://www.raywenderlich.com/about#edekhayser" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/17993.jpg" width="100" height="100" class="user-avatar"></a></li><li><a href="http://www.raywenderlich.com/about#mkonutgan" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/15377.jpg" width="100" height="100" class="user-avatar"></a></li></ul><p>... <a href="http://www.raywenderlich.com/about#abt_tut-swift" sl-processed="1">13 total!</a></p><h2>iOS Team</h2><ul><li><a href="http://www.raywenderlich.com/about#rturton" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/33067.jpeg" width="100" height="100" class="user-avatar"></a></li><li><a href="http://www.raywenderlich.com/about#aobusek" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/51021.png" width="100" height="100" class="user-avatar"></a></li><li><a href="http://www.raywenderlich.com/about#klau" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/60323.jpg" width="100" height="100" class="user-avatar"></a></li></ul><p>... <a href="http://www.raywenderlich.com/about#abt_tut-ios" sl-processed="1">52 total!</a></p><h2>Android Team</h2><ul><li><a href="http://www.raywenderlich.com/about#dbayliss" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/15813.jpg" width="100" height="100" class="user-avatar"></a></li><li><a href="http://www.raywenderlich.com/about#sdavies" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/26916.jpg" width="100" height="100" class="user-avatar"></a></li><li><a href="http://www.raywenderlich.com/about#mluedke" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/28143.jpg" width="100" height="100" class="user-avatar"></a></li></ul><p>... <a href="http://www.raywenderlich.com/about#abt_tut-android" sl-processed="1">5 total!</a></p><h2>OS X Team</h2><ul><li><a href="http://www.raywenderlich.com/about#gmiro" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/13764.jpg" width="100" height="100" class="user-avatar"></a></li><li><a href="http://www.raywenderlich.com/about#wburton" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/61421.jpg" width="100" height="100" class="user-avatar"></a></li><li><a href="http://www.raywenderlich.com/about#mtodorov" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/152.jpg" width="100" height="100" class="user-avatar"></a></li></ul><p>... <a href="http://www.raywenderlich.com/about#abt_tut-osx" sl-processed="1">10 total!</a></p><h2>Sprite Kit Team</h2><ul><li><a href="http://www.raywenderlich.com/about#mbriscoe" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/1442.jpg" width="100" height="100" class="user-avatar"></a></li><li><a href="http://www.raywenderlich.com/about#jjordan" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/14109.png" width="100" height="100" class="user-avatar"></a></li><li><a href="http://www.raywenderlich.com/about#tstephens" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/16133.png" width="100" height="100" class="user-avatar"></a></li></ul><p>... <a href="http://www.raywenderlich.com/about#abt_sprite-kit" sl-processed="1">8 total!</a></p><h2>Unity Team</h2><ul><li><a href="http://www.raywenderlich.com/about#givanov" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/32443.png" width="100" height="100" class="user-avatar"></a></li><li><a href="http://www.raywenderlich.com/about#ppereira" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/60521.jpg" width="100" height="100" class="user-avatar"></a></li><li><a href="http://www.raywenderlich.com/about#breichart" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/1968.jpg" width="100" height="100" class="user-avatar"></a></li></ul><p>... <a href="http://www.raywenderlich.com/about#abt_tut-unity" sl-processed="1">4 total!</a></p><h2>Unreal Engine Team</h2><ul><li><a href="http://www.raywenderlich.com/about#sgonchar" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/59376.png" width="100" height="100" class="user-avatar"></a></li><li><a href="http://www.raywenderlich.com/about#rwenderlich" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/2.png" width="100" height="100" class="user-avatar"></a></li></ul><p>... <a href="http://www.raywenderlich.com/about#abt_unreal-engine" sl-processed="1">2 total!</a></p><h2>Articles Team</h2><ul><li><a href="http://www.raywenderlich.com/about#crocchi" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/1036.jpg" width="100" height="100" class="user-avatar"></a></li><li><a href="http://www.raywenderlich.com/about#prea" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/12059.jpg" width="100" height="100" class="user-avatar"></a></li><li><a href="http://www.raywenderlich.com/about#bmorefield" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/60324" width="100" height="100" class="user-avatar"></a></li></ul><p>... <a href="http://www.raywenderlich.com/about#abt_article" sl-processed="1">8 total!</a></p>		</div>
+	</section>
+</section>
+	</div></div><div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/X9pYjJn4xhW.html" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/X9pYjJn4xhW(1).html" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+			<footer id="colophon" class="clearfix">
+		<h1 id="about-raywenderlich">About RayWenderlich.com</h1><div class="wrapper clearfix"><div id="css-table-enclosure"><div class="forum-posts-sep footer-separator first table-col"></div><div class="forum-posts table-col"><h2>Recent Forum Posts</h2><ul class="comments"><li><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/301b456c4d6b2cfd52decb86a10ef114" alt="" width="100" height="100" data-site-url="http://cdn1.raywenderlich.com/wp-content/themes/raywenderlich" class="user-avatar gravatar"><div>Hi Caroline,
+
+thank you for the great tutorial! I am new to Swift and am wondering  ...<br> in <a href="http://www.raywenderlich.com/forums/viewtopic.php?f=20&t=19908" sl-processed="1">Storyboards Tutorial in Swift: Part 2</a></div></li><li><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/531eb5d6c7944c906ae1b45355e67e53" alt="" width="100" height="100" data-site-url="http://cdn1.raywenderlich.com/wp-content/themes/raywenderlich" class="user-avatar gravatar"><div> ...<br> in <a href="http://www.raywenderlich.com/forums/viewtopic.php?f=2&t=22724" sl-processed="1">Help with Child View controller animations</a></div></li></ul><a href="http://www.raywenderlich.com/forums/" class="RWButton" sl-processed="1">VISIT THE FORUM »</a></div><div class="facebook-page-sep footer-separator table-col"></div><div class="facebook-page table-col"><h2>Like Us on Facebook</h2><div class="like-box"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/small-logo@2x.png" width="50" height="50" id="small-logo"><h3>Ray Wenderlich</h3>							<iframe src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/tweet_button.9b77a1cb4bd14da06dfa5e2f65422c91.en(1).html" allowtransparency="true" frameborder="0" scrolling="no" style="width: 50px; height: 20px;"></iframe>
+							</div>						    <p class="page-like-count"><span id="like-count">9399</span> people like <a href="https://www.facebook.com/raywenderlich" target="_blank" sl-processed="1">Ray Wenderlich</a></p>
+							<div class="fb-window">
+								<div class="fb-like-box fb_iframe_widget" data-href="https://www.facebook.com/pages/raywenderlichcom/516533855059578" data-width="292" data-show-faces="true" data-colorscheme="dark" data-stream="false" data-header="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;color_scheme=dark&amp;container_width=280&amp;header=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fpages%2Fraywenderlichcom%2F516533855059578&amp;locale=en_US&amp;sdk=joey&amp;show_faces=true&amp;stream=false&amp;width=292"><span style="vertical-align: bottom; width: 292px; height: 214px;"><iframe name="f2a0572ae8" width="292px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like_box Facebook Social Plugin" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/like_box.html" style="border: none; visibility: visible; width: 292px; height: 214px;" class=""></iframe></span></div>
+							</div>
+						</div><div class="latest-tweets-sep footer-separator table-col"></div><div class="latest-tweets table-col"><h2>Our Recent Tweets</h2><ul id="rw-tweet-list"><li><a href="http://twitter.com/astralbodies" target="_blank" class="tweet-author" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/UZ0kei1o_normal.jpeg" alt="astralbodies" width="48" height="48"></a><div class="tweet-content"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/tweet-arrow@2x.png" class="tweet-arrow" width="8" height="14">Its funny how many people don't know their email address. Another snapchat account deleted for one of my counterparts.<br><a href="http://twitter.com/astralbodies" target="_blank" sl-processed="1">Aaron Douglas </a> -<span class="tweet-time">17 minutes ago</span></div></li><li><a href="http://twitter.com/RuiAAPeres" target="_blank" class="tweet-author" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/XdjY61Eh_normal.jpg" alt="RuiAAPeres" width="48" height="48"></a><div class="tweet-content"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/tweet-arrow@2x.png" class="tweet-arrow" width="8" height="14">"A monad is a guy that doesn't have a home and walks around in the desert. Sorry, I meant a nomad" - by <a href="http://twitter.com/kristianangyal" target="_blank" sl-processed="1">@kristianangyal</a> <img class="emoji" draggable="false" alt="😆" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/1f606.png"><br><a href="http://twitter.com/RuiAAPeres" target="_blank" sl-processed="1">R. Peres</a> -<span class="tweet-time">43 minutes ago</span></div></li></ul><a href="https://twitter.com/rwenderlich/lists/raywenderlich-com-team" class="RWButton" sl-processed="1">FOLLOW US ON TWITTER</a></div><div class="footer-separator last table-col"></div></div></div><div class="navigation-band"><div class="wrapper"><div class="left-col">© 2015 <a href="http://www.razeware.com/" sl-processed="1">Razeware LLC. All rights reserved.</a></div><div class="right-col"><ul><li><a href="http://www.raywenderlich.com/write-for-us" sl-processed="1">WRITE FOR US</a></li><li><a href="http://www.raywenderlich.com/faq" sl-processed="1">FAQ</a></li><li><a href="http://www.raywenderlich.com/advertise" sl-processed="1">ADVERTISE</a></li><li><a href="http://www.raywenderlich.com/contact" sl-processed="1">CONTACT</a></li></ul></div></div></div><div id="gearbox"><div class="wrapper"><div id="left-gears"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/gear_small@2x.png" width="56" height="56" class="left-gear clockwise-motion small-gear gear" id="gear1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/gear_medium@2x.png" width="66" height="66" class="left-gear counter-clockwise-motion  medium-gear gear" id="gear2"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/gear_large@2x.png" width="96" height="96" class="left-gear clockwise-motion large-gear gear" id="gear3"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/gear_medium@2x.png" width="67" height="67" class="left-gear counter-clockwise-motion medium-gear gear" id="gear4"></div><a href="http://www.raywenderlich.com/" id="footer-logo" sl-processed="1"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/logo_stage5@2x.png" width="160" height="75" border="0" class="logo-sat"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/logo_stage1@2x.png" width="160" height="75" border="0" class="logo">
+									</a><div id="right-gears"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/gear_small@2x.png" width="51" height="50" class="right-gear clockwise-motion small-gear gear" id="gear5"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/gear_medium@2x.png" width="67" height="67" class="right-gear counter-clockwise-motion  medium-gear gear" id="gear6"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/gear_large@2x.png" width="96" height="96" class="right-gear clockwise-motion large-gear gear" id="gear7"><img src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/gear_medium@2x.png" width="67" height="67" class="right-gear counter-clockwise-motion  medium-gear gear" id="gear8"></div></div></div><footer><script type="text/javascript" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/jquery.cookie.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        var count;
+        if ( !jQuery.cookie('wwsgd_visits') ) {
+            count = 1;
+        }
+        else {
+            count = parseInt(jQuery.cookie('wwsgd_visits'), 10) + 1;
+        }
+        jQuery.cookie('wwsgd_visits', count, { expires: 365, path: "/" });
+
+        if ( count <= 5 ) {
+            jQuery(".wwsgd").show();
+        }
+    });
+</script>
+<script type="text/javascript" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/widgets.js"></script>
+<script type="text/javascript" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/jquery.form.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var _wpcf7 = {"loaderUrl":"http:\/\/www.raywenderlich.com\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Sending ...","cached":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/scripts.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var qpprFrontData = {"linkData":[],"siteURL":"http:\/\/www.raywenderlich.com","siteURLq":"http:\/\/www.raywenderlich.com"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/qppr_frontend_script.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var pollsL10n = {"ajax_url":"http:\/\/www.raywenderlich.com\/wp-admin\/admin-ajax.php","text_wait":"Your last request is still being processed. Please wait a while ...","text_valid":"Please choose a valid poll answer.","text_multiple":"Maximum number of choices allowed: ","show_loading":"1","show_fading":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Beginning Game Programming for Teens with Python - Ray Wenderlich_files/polls-js.js"></script>
+		
+		<script type="text/javascript">var _merchantSettings=_merchantSettings || [];_merchantSettings.push(['AT', '11ld4k']);(function(){var autolink=document.createElement('script');autolink.type='text/javascript';autolink.async=true; autolink.src='http://autolinkmaker.itunes.apple.com/js/itunes_autolinkmaker.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(autolink, s);})();</script>
+				<script>
+			if (jQuery.browser.msie) { jQuery("html").addClass("msie"); }
+			if (typeof window.chrome === "object") { jQuery("html").addClass("chrome"); }
+		</script>
+	
+
+
+
+<!-- Dynamic page generated in 1.470 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2015-07-24 09:02:18 -->
+
+<!-- Compression = gzip --></footer></footer><div class="swiftype-widget"><div class="autocomplete" style="position: absolute; z-index: 9999; top: 97px; left: 1314.984375px; width: 203px; display: none;"><ul></ul></div></div></body></html>
