@@ -18,6 +18,7 @@ badtimer=100
 badtimer1=0
 badguys=[[640,100]]
 healthvalue=194
+pause = False
 
 # 3 - Load images
 player = pygame.image.load("resources/images/dude.png")
@@ -42,6 +43,16 @@ youwin = pygame.image.load("resources/images/youwin.png")
 running = 1
 exitcode = 0
 while running:
+    for event in pygame.event.get():
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_p:
+                pause = True
+            elif event.key == pygame.K_r:
+                pause = False
+
+    #check if paused
+    if pause:
+        continue
     badtimer-=1
     # 5 - clear the screen before drawing it again
     screen.fill(0)
@@ -125,23 +136,29 @@ while running:
             pygame.quit()
             exit(0)
         if event.type == pygame.KEYDOWN:
-            if event.key==K_w:
+            if event.key==K_w or event.key==pygame.K_UP :
                 keys[0]=True
-            elif event.key==K_a:
+            elif event.key==K_a or event.key==pygame.K_LEFT:
                 keys[1]=True
-            elif event.key==K_s:
+            elif event.key==K_s or event.key==pygame.K_RIGHT:
                 keys[2]=True
-            elif event.key==K_d:
+            elif event.key==K_d or event.key==pygame.K_DOWN:
                 keys[3]=True
+
         if event.type == pygame.KEYUP:
-            if event.key==pygame.K_w:
+            if event.key==pygame.K_w or event.key==pygame.K_UP :
                 keys[0]=False
-            elif event.key==pygame.K_a:
+            elif event.key==pygame.K_a or event.key==pygame.K_LEFT:
                 keys[1]=False
-            elif event.key==pygame.K_s:
+            elif event.key==pygame.K_s or event.key==pygame.K_RIGHT:
                 keys[2]=False
-            elif event.key==pygame.K_d:
+            elif event.key==pygame.K_d or event.key==pygame.K_DOWN:
                 keys[3]=False
+            elif event.key == pygame.K_p:
+                pause = True
+            elif event.key == pygame.K_r:
+                pause = False
+
         if event.type==pygame.MOUSEBUTTONDOWN:
             position=pygame.mouse.get_pos()
             acc[1]+=1
